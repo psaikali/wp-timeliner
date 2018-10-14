@@ -27,6 +27,9 @@ class Timeliner implements Has_Hooks {
 		//$assets = new Setup\Enqueue_Assets();
 	}
 
+	/**
+	 * Register required hooks.
+	 */
 	public function hooks() {
 		add_action( 'after_setup_theme', [ '\Carbon_Fields\Carbon_Fields', 'boot' ] );
 	}
@@ -36,6 +39,7 @@ class Timeliner implements Has_Hooks {
 	 * Executed when plugin is activated.
 	 */
 	public static function activate() {
+		// TODO : check_requirements() (PHP version) and maybe automatically disable the plugin.
 		flush_rewrite_rules();
 	}
 
@@ -53,15 +57,13 @@ class Timeliner implements Has_Hooks {
 	 * @return void
 	 */
 	protected function include_libraries() {
+		// Include CarbonFields library if it does not exist.
 		if ( ! class_exists( '\Carbon_Fields' ) ) {
 			require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-plugins' . DIRECTORY_SEPARATOR . 'carbon-fields-plugin.php';
 		}
-	}
 
-	/**
-	 * Boot Carbon Fields.
-	 */
-	public function boot_carbonfields() {
-		\Carbon_Fields\Carbon_Fields::boot();
+		// Register a new CarbonFields Icon field type.
+		require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-icon-field' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'Icon_Field.php';
+		require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-icon-field' . DIRECTORY_SEPARATOR . 'field.php';
 	}
 }

@@ -18,6 +18,7 @@ class Register_Hooks {
 		'Schema\Taxonomy_Timeline',
 		'Schema\Taxonomy_Tag',
 		'Schema\Fields_Achievement',
+		'Schema\Fields_Timeline',
 	];
 
 	/**
