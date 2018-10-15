@@ -2,6 +2,10 @@
 
 namespace WP_Timeliner\Schema;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
 use WP_Timeliner\Helpers;
 
@@ -27,11 +31,8 @@ class Taxonomy_Tag extends Abstract_Taxonomy implements Has_Hooks {
 				self::TAXONOMY,
 			],
 			[
+				'public'       => false,
 				'hierarchical' => false,
-				'rewrite'      => [
-					'slug'       => 'tag',
-					'with_front' => false,
-				],
 			],
 			[
 				Post_Type_Achievement::POST_TYPE,
