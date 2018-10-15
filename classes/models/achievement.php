@@ -7,10 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use WP_Timeliner\Schema\Post_Type_Achievement;
-use WP_Timeliner\Helpers;
 
 /**
- * A model to get easy access to Achievement posts.
+ * A model to get easy access to Achievement posts data.
  */
 class Achievement extends Abstract_Post {
 	/**
@@ -18,6 +17,15 @@ class Achievement extends Abstract_Post {
 	 */
 	protected function set_post_type() {
 		$this->post_type = Post_Type_Achievement::POST_TYPE;
+	}
+
+	/**
+	 * Proxy function to get summary (or excerpt).
+	 *
+	 * @return string The achievement summary.
+	 */
+	public function get_summary() {
+		return $this->get_excerpt();
 	}
 
 	/**
@@ -72,12 +80,13 @@ class Achievement extends Abstract_Post {
 	 * @return boolean Whether to display the button or not
 	 */
 	public function has_button() {
-		return ( $this->get_meta( 'achievement_show_button' ) === 1 );
+		return ( $this->get_meta( 'achievement_show_button' ) == 1 );
 	}
 
 	/**
 	 * Get Achievement tags.
 	 *
+	 * @todo
 	 * @return array Array of WP_Timeliner\Models\Tags
 	 */
 	public function get_tags() {

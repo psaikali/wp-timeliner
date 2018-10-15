@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
-use WP_Timeliner\Helpers;
 use WP_Timeliner\Schema\Post_Type_Achievement;
 use WP_Timeliner\Schema\Taxonomy_Timeline;
 use WP_Timeliner\Models\Achievement as Achievement_Post;
@@ -28,7 +27,6 @@ class Achievement implements Has_Hooks {
 	 * Order Achievements by start date metadata
 	 *
 	 * @param WP_Query $query
-	 * @return void
 	 */
 	public function order_achievements_by_start_date( $query ) {
 		if ( $query->is_main_query() && ( is_post_type_archive( Post_Type_Achievement::POST_TYPE ) || is_tax( Taxonomy_Timeline::TAXONOMY ) ) ) {
@@ -39,10 +37,14 @@ class Achievement implements Has_Hooks {
 		}
 	}
 
+	/**
+	 * Directly inject a ready-to-use Achievement_Post object in the global $post variable.
+	 *
+	 * @param WP_Post $post A post currently looped on.
+	 */
 	public function inject_achievement_data_into_post( $post ) {
 		if ( $post->post_type === Post_Type_Achievement::POST_TYPE ) {
-			$achievement       = new Achievement_Post( $post );
-			$post->achievement = $achievement;
+			$post->achievement = new Achievement_Post( $post );
 		}
 	}
 }

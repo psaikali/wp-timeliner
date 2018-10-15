@@ -92,7 +92,7 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 	 */
 	public function custom_css_on_achievement_edit_page() {
 		if ( $this->is_edit_admin_page() ) {
-				echo '<style>#postexcerpt textarea + p { display:none; }</style>';
+			echo '<style>#postexcerpt textarea + p { display:none; }</style>';
 		}
 	}
 }
