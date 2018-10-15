@@ -45,7 +45,12 @@ register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Timeliner', 'activa
 register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Timeliner', 'deactivate' ) );
 
 /**
- * Fire the fun stuff
+ * Include our globally usable functions.
+ */
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
+
+/**
+ * Fire the fun stuff!
  */
 $plugin = new Timeliner();
 add_action( 'plugins_loaded', array( $plugin, 'fire' ) );
