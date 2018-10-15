@@ -71,11 +71,11 @@ class Register_Hooks {
 	 */
 	private function register_hooks() {
 		foreach ( $this->get_hooking_classes() as $class ) {
-			$full_class_name = ( $this->namespace . '\\' . $class );
-			$class           = new $full_class_name();
+			$full_class_name    = ( $this->namespace . '\\' . $class );
+			$reflection      = new \ReflectionClass( $full_class_name );
 
-			if ( $class instanceof Has_Hooks ) {
-				$class->hooks();
+			if ( $reflection->implementsInterface( 'WP_Timeliner\Common\Interfaces\Has_Hooks' ) ) {
+				( new $full_class_name() )->hooks();
 			}
 		}
 	}
