@@ -2,6 +2,13 @@
 
 namespace WP_Timeliner;
 
+use WP_Timeliner\Options\Options;
+
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Helpful utilities functions
  */
@@ -47,5 +54,16 @@ class Helpers {
 	public static function include_template( $template_file_name, $relative_to = false, $ext = '.php' ) {
 		$base = ( ! $relative_to ) ? TIMELINER_DIR : $relative_to;
 		include_once trailingslashit( $base ) . 'templates' . DIRECTORY_SEPARATOR . $template_file_name . $ext;
+	}
+
+	/**
+	 * Proxy function to get a specific option
+	 *
+	 * @param string $option The option ID
+	 * @param string $container_id The container ID
+	 * @return mixed The option value.
+	 */
+	public static function get_option( $option, $default = null, $carbon = true ) {
+		return Options::get( $option, $default, $carbon );
 	}
 }

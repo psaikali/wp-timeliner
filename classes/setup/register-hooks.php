@@ -2,6 +2,10 @@
 
 namespace WP_Timeliner\Setup;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
 
 /**
@@ -14,11 +18,14 @@ class Register_Hooks {
 	 * @var array
 	 */
 	private $classes = [
+		'Timeliner',
+		'Options\Options',
 		'Schema\Post_Type_Achievement',
 		'Schema\Taxonomy_Timeline',
 		'Schema\Taxonomy_Tag',
 		'Schema\Fields_Achievement',
 		'Schema\Fields_Timeline',
+		'Queries\Achievement',
 	];
 
 	/**
