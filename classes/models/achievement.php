@@ -6,17 +6,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use WP_Timeliner\Common\Interfaces\Has_Hooks;
+use WP_Timeliner\Schema\Post_Type_Achievement;
 
-class Achievement implements Has_Hooks {
+/**
+ * A model to get easy access to Achievement posts.
+ */
+class Achievement extends Abstract_Post {
 	/**
-	 * Necessary method to register the hooks.
+	 * Define the Achievement post type.
 	 */
-	public function hooks() {
-		add_action( 'admin_footer', [ $this, 'debug_hook' ] );
+	protected function set_post_type() {
+		$this->post_type = Post_Type_Achievement::POST_TYPE;
 	}
 
-	public function debug_hook() {
-		error_log( 'debugging hook' );
+	/**
+	 * Get the Achievement start date.
+	 *
+	 * @return int The start date timestamp
+	 */
+	public function get_start_date() {
+		return $this->get_meta( 'achievement_start_date' );
 	}
 }
