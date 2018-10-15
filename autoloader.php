@@ -2,6 +2,10 @@
 
 namespace WP_Timeliner;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Our Timeliner plugin autoloader.
  * No "class-" will be used in our filenames, because reasons.

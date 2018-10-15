@@ -2,6 +2,10 @@
 
 namespace WP_Timeliner\Schema;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Taxonomy creation helper class.
  *

@@ -2,6 +2,10 @@
 
 namespace WP_Timeliner\Schema;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Post type creation helper class.
  *
@@ -280,5 +284,17 @@ abstract class Abstract_Post_Type {
 		}
 
 		return $title;
+	}
+
+	/**
+	 * Are we currently creating/editing a $this->post_type post?
+	 *
+	 * @return boolean
+	 */
+	protected function is_edit_admin_page() {
+		$screen = get_current_screen();
+
+		return ( isset( $screen->post_type ) && $screen->post_type == $this->post_type );
+		//return ( isset( $_GET['post_type'] ) && $_GET['post_type'] === SELF::POST_TYPE ) || ( isset( $_GET['post'] ) && get_post_type( (int) $_GET['post'] ) === SELF::POST_TYPE );
 	}
 }

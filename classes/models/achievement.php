@@ -2,12 +2,11 @@
 
 namespace WP_Timeliner\Models;
 
-use WP_Timeliner\Common\Interfaces\Has_Hooks;
-
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use WP_Timeliner\Common\Interfaces\Has_Hooks;
 
 class Achievement implements Has_Hooks {
 	/**

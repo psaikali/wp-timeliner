@@ -2,6 +2,10 @@
 
 namespace WP_Timeliner\Schema;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
 use Carbon_Fields\Field;
 use WP_Timeliner\Helpers;
