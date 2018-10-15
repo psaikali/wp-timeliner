@@ -4,7 +4,6 @@ namespace WP_Timeliner\Models;
 
 use Carbon_Fields\Helper\Helper;
 
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -96,6 +95,24 @@ abstract class Abstract_Post {
 	 */
 	public function set_meta( $meta_key, $meta_value ) {
 		// Todo.
+	}
+
+	/**
+	 * Get content.
+	 *
+	 * @return string The post content.
+	 */
+	public function get_content() {
+		return apply_filters( 'the_content', $this->get_post()->post_content );
+	}
+
+	/**
+	 * Get excerpt.
+	 *
+	 * @return string The post excerpt.
+	 */
+	public function get_excerpt() {
+		return $this->get_post()->post_excerpt;
 	}
 
 	/**
