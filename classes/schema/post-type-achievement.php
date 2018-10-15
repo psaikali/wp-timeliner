@@ -2,7 +2,12 @@
 
 namespace WP_Timeliner\Schema;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
+use WP_Timeliner\Helpers;
 
 /**
  * Achievement post type
@@ -35,7 +40,7 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 				'menu_icon' => 'dashicons-exerpt-view',
 				'public'    => true,
 				'rewrite'   => [
-					'slug'       => 'achievement',
+					'slug'       => $this->get_slug(),
 					'with_front' => true,
 				],
 				'labels'    => [
@@ -45,5 +50,49 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 				],
 			]
 		);
+	}
+
+	/**
+	 * Register necessary hooks.
+	 */
+	public function hooks() {
+		parent::hooks();
+
+		add_filter( 'gettext', [ $this, 'change_excerpt_title' ], 10, 3 );
+		add_action( 'admin_head', [ $this, 'custom_css_on_achievement_edit_page' ] );
+	}
+
+	/**
+	 * Retrieve the Achievement slug in options
+	 *
+	 * @return string The slug defined by user/default slug.
+	 */
+	protected function get_slug() {
+		return sanitize_title_with_dashes( Helpers::get_option( 'achievement_slug', 'achievement', false ) );
+	}
+
+	/**
+	 * Change the exerpt metabox
+	 *
+	 * @param string $excerpt The default Excerpt title.
+	 * @return string
+	 */
+	public function change_excerpt_title( $excerpt, $text, $domain ) {
+		if ( $text === 'Excerpt' && $domain === 'default' ) {
+			if ( $this->is_edit_admin_page() ) {
+				return __( 'Achievement summary', 'wp-timeliner' );
+			}
+		}
+
+		return $excerpt;
+	}
+
+	/**
+	 * Add some custom CSS on the Achievement edit page.
+	 */
+	public function custom_css_on_achievement_edit_page() {
+		if ( $this->is_edit_admin_page() ) {
+				echo '<style>#postexcerpt textarea + p { display:none; }</style>';
+		}
 	}
 }

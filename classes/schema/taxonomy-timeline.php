@@ -2,6 +2,10 @@
 
 namespace WP_Timeliner\Schema;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
 use WP_Timeliner\Helpers;
 
@@ -29,7 +33,7 @@ class Taxonomy_Timeline extends Abstract_Taxonomy implements Has_Hooks {
 			[
 				'hierarchical' => false,
 				'rewrite'      => [
-					'slug'       => 'timeline',
+					'slug'       => $this->get_slug(),
 					'with_front' => false,
 				],
 			],
@@ -47,6 +51,15 @@ class Taxonomy_Timeline extends Abstract_Taxonomy implements Has_Hooks {
 
 		$taxonomy = self::TAXONOMY;
 		add_action( "{$taxonomy}_pre_add_form", [ $this, 'display_taxonomy_form_introduction' ] );
+	}
+
+	/**
+	 * Retrieve the Timeline slug in options
+	 *
+	 * @return string The slug defined by user/default slug.
+	 */
+	protected function get_slug() {
+		return sanitize_title_with_dashes( Helpers::get_option( 'timeline_slug', 'timeline', false ) );
 	}
 
 	/**
