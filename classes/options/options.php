@@ -11,6 +11,10 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 class Options implements Has_Hooks {
+	/**
+	 * The options page slug
+	 */
+	const OPTIONS_SLUG = 'wp-timeliner-options';
 
 	/**
 	 * Register necessary hooks
@@ -18,6 +22,8 @@ class Options implements Has_Hooks {
 	 * @todo Make an abstract class for that, to reuse for other options pages.
 	 */
 	public function hooks() {
+		add_filter( 'plugin_action_links_' . TIMELINER_BASENAME, [ $this, 'plugin_settings_link' ] );
+
 		add_action( 'carbon_fields_register_fields', [ $this, 'initialize_options_page' ] );
 		add_filter( 'wpt.options.tabs', [ $this, 'get_tabs' ] );
 
@@ -49,7 +55,7 @@ class Options implements Has_Hooks {
 		$theme_options = Container::make( 'theme_options', __( 'WP Timeliner options', 'wp-timeliner' ) )->set_page_parent( 'options-general.php' );
 
 		// Change its slug.
-		$theme_options->set_page_file( 'wp-timeliner-options' );
+		$theme_options->set_page_file( self::OPTIONS_SLUG );
 
 		// Change its menu title.
 		$theme_options->set_page_menu_title( __( 'WP Timeliner', 'wp-timeliner' ) );
@@ -120,8 +126,27 @@ class Options implements Has_Hooks {
 		return $fields;
 	}
 
+	/**
+	 * Prefix a field ID
+	 *
+	 * @param string $id
+	 * @return string The prefixed ID.
+	 */
 	private static function field( $id ) {
 		return "wpt_{$id}";
+	}
+
+	public function plugin_settings_link( $links ) {
+		$settings_url = admin_url( 'options-general.php?page=' . self::OPTIONS_SLUG );
+		$settings_link_tag = sprintf(
+			'<a href="%1$s">%2$s</a>',
+			esc_url( $settings_url ),
+			__( 'Settings', 'wp-timeliner' )
+		);
+
+		array_unshift( $links, $settings_link_tag );
+
+		return $links;
 	}
 
 	/**
@@ -143,5 +168,4 @@ class Options implements Has_Hooks {
 
 		return $option;
 	}
-
 }
