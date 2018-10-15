@@ -97,4 +97,32 @@ abstract class Abstract_Post {
 	public function set_meta( $meta_key, $meta_value ) {
 		// Todo.
 	}
+
+	/**
+	 * Get the post thumbnail.
+	 *
+	 * @param string $size The image size.
+	 * @return string The post thumbnail image URL.
+	 */
+	public function get_thumbnail( $size = 'full' ) {
+		return get_the_post_thumbnail_url( $this->get_id(), $size );
+	}
+
+	/**
+	 * Return the post thumbnail ID
+	 *
+	 * @return int Thumbnail ID.
+	 */
+	public function get_thumbnail_id() {
+		return get_post_thumbnail_id( $this->get_id() );
+	}
+
+	/**
+	 * Check the current object has a thumbnail
+	 *
+	 * @return bool
+	 */
+	public function has_thumbnail() {
+		return has_post_thumbnail( $this->get_id() );
+	}
 }
