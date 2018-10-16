@@ -19,7 +19,7 @@ class Register_Hooks {
 	 */
 	private $classes = [
 		'Timeliner',
-		'Options\Options',
+		'Admin\Options\Options',
 		'Schema\Post_Type_Achievement',
 		'Schema\Taxonomy_Timeline',
 		'Schema\Taxonomy_Tag',
@@ -27,6 +27,7 @@ class Register_Hooks {
 		'Schema\Fields_Timeline',
 		'Queries\Achievement',
 		'Frontend\Templates',
+		'Frontend\Shortcodes\Timeline',
 	];
 
 	/**
