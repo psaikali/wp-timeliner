@@ -3,6 +3,7 @@
 namespace WP_Timeliner\Models;
 
 use Carbon_Fields\Helper\Helper;
+use WP_Timeliner\Common\Traits\Magic_Getter;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A model to get easy access to taxonomy terms, with superpowers.
  */
 abstract class Abstract_Term {
+	use Magic_Getter;
+	
 	/**
 	 * The taxonomy we are dealing with
 	 *
@@ -85,15 +88,47 @@ abstract class Abstract_Term {
 	}
 
 	/**
-	 * Set metadata.
+	 * Get name.
 	 *
-	 * @todo Implement this, when needed.
-	 * @param string $meta_key
-	 * @param mixed $meta_value
+	 * @return string The term name.
 	 */
-	public function set_meta( $meta_key, $meta_value ) {
-		// Todo.
+	public function get_name() {
+		return $this->get_term()->name;
 	}
 
-	
+	/**
+	 * Proxy function to get title (or name).
+	 *
+	 * @return string The term title.
+	 */
+	public function get_title() {
+		return $this->get_name();
+	}
+
+	/**
+	 * Get slug.
+	 *
+	 * @return string The term slug.
+	 */
+	public function get_slug() {
+		return $this->get_term()->slug;
+	}
+
+	/**
+	 * Get description.
+	 *
+	 * @return string The term description.
+	 */
+	public function get_description( $filtered = false ) {
+		return $filtered ? apply_filters( 'the_content', $this->get_term()->description ) : $this->get_term()->description;
+	}
+
+	/**
+	 * Proxy function to get content (or description).
+	 *
+	 * @return string The term description.
+	 */
+	public function get_content( $filtered = false ) {
+		return $this->get_description( $filtered );
+	}
 }

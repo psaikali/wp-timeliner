@@ -3,6 +3,7 @@
 namespace WP_Timeliner\Models;
 
 use Carbon_Fields\Helper\Helper;
+use WP_Timeliner\Common\Traits\Magic_Getter;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link https://github.com/BeAPI/bea-plugin-boilerplate
  */
 abstract class Abstract_Post {
+	use Magic_Getter;
+
 	/**
 	 * The post type we are dealing with
 	 *
@@ -87,23 +90,12 @@ abstract class Abstract_Post {
 	}
 
 	/**
-	 * Set metadata.
-	 *
-	 * @todo Implement this, when needed.
-	 * @param string $meta_key
-	 * @param mixed $meta_value
-	 */
-	public function set_meta( $meta_key, $meta_value ) {
-		// Todo.
-	}
-
-	/**
 	 * Get content.
 	 *
 	 * @return string The post content.
 	 */
-	public function get_content() {
-		return apply_filters( 'the_content', $this->get_post()->post_content );
+	public function get_content( $filtered = false ) {
+		return $filtered ? apply_filters( 'the_content', $this->get_post()->post_content ) : $this->get_post()->post_content;
 	}
 
 	/**
@@ -113,6 +105,24 @@ abstract class Abstract_Post {
 	 */
 	public function get_excerpt() {
 		return $this->get_post()->post_excerpt;
+	}
+
+	/**
+	 * Get title.
+	 *
+	 * @return string The post title.
+	 */
+	public function get_title() {
+		return $this->get_post()->post_title;
+	}
+
+	/**
+	 * Get slug (post name).
+	 *
+	 * @return string The post slug.
+	 */
+	public function get_slug() {
+		return $this->get_post()->post_name;
 	}
 
 	/**
