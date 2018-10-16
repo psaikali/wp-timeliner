@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
 use Carbon_Fields\Field;
 use WP_Timeliner\Helpers;
+use WP_Timeliner\Frontend\Themes;
 
 /**
  * Register Timeline fields
@@ -36,15 +37,14 @@ class Fields_Timeline extends Abstract_Fields implements Has_Hooks {
 	 * @return array An array of Carbon_Fields\Field fields.
 	 */
 	protected function fields_for_timeline_settings() {
-		$fields = [];
+		$fields         = [];
+		$themes_classes = Themes::get_themes();
 
-		$themes = apply_filters(
-			'wpt.timeline.themes',
-			[
-				'left'  => Helpers::asset_image( 'theme-left.png' ),
-				'right' => Helpers::asset_image( 'theme-right.png' ),
-				'snake' => Helpers::asset_image( 'theme-snake.png' ),
-			]
+		$themes = array_map(
+			function( $theme ) {
+				return $theme->get_icon();
+			},
+			$themes_classes
 		);
 
 		$fields[] = Field::make( 'radio_image', 'timeline_theme', __( 'Theme', 'wp-timeliner' ) )
