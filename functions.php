@@ -35,7 +35,7 @@ function wpt_timeline( $timeline = null ) {
 function wpt_achievement( $achievement = null ) {
 	if ( is_null( $achievement ) ) {
 		global $post;
-		
+
 		if ( ( $achievement = get_queried_object() ) && is_a( $achievement, 'WP_Post' ) ) {
 			return new Achievement( $achievement );
 		} elseif ( isset( $post ) && is_a( $post, 'WP_Post' ) && $post->post_type === Post_Type_Achievement::POST_TYPE ) {
