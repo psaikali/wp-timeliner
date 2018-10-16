@@ -17,7 +17,7 @@ if ( have_posts() ) {
 	}
 } else {
 	do_action( 'wpt.template.before-no-achievement-found' );
-	Templates::get_template( 'no-achievement-found.php', [ 'timeline' => $timeline ]  );
+	Templates::get_template( 'no-achievement-found.php', [ 'timeline' => $timeline ] );
 	do_action( 'wpt.template.after-no-achievement-found' );
 }
 
