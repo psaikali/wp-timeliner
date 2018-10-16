@@ -26,6 +26,7 @@ class Register_Hooks {
 		'Schema\Fields_Achievement',
 		'Schema\Fields_Timeline',
 		'Queries\Achievement',
+		'Frontend\Templates',
 	];
 
 	/**
