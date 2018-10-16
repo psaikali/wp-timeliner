@@ -40,7 +40,7 @@ class Fields_Achievement extends Abstract_Fields implements Has_Hooks {
 		$fields[] = Field::make( 'date', 'achievement_start_date', __( 'Start date', 'wp-timeliner' ) )
 					->set_storage_format( 'U' )
 					->set_attribute( 'placeholder', __( 'Start date for this achievement', 'wp-timeliner' ) )
-					->set_attribute( 'autocomplete', 'off' )
+					->set_picker_options( [ 'allowInput' => false ] )
 					->set_help_text( __( 'This date will be used to position this achievement in its timeline.', 'wp-timeliner' ) )
 					->set_required( true )
 					->set_width( 50 );
@@ -48,7 +48,7 @@ class Fields_Achievement extends Abstract_Fields implements Has_Hooks {
 		$fields[] = Field::make( 'date', 'achievement_end_date', __( 'End date', 'wp-timeliner' ) )
 					->set_storage_format( 'U' )
 					->set_attribute( 'placeholder', __( 'End date for this achievement', 'wp-timeliner' ) )
-					->set_attribute( 'data-autocomplete', 'off' )
+					->set_picker_options( [ 'allowInput' => false ] )
 					->set_width( 50 );
 
 		$fields[] = Field::make( 'icon', 'achievement_icon', __( 'Icon', 'wp-timeliner' ) )
