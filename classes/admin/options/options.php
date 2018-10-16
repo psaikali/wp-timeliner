@@ -1,6 +1,6 @@
 <?php
 
-namespace WP_Timeliner\Options;
+namespace WP_Timeliner\Admin\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -166,6 +166,6 @@ class Options implements Has_Hooks {
 			$option      = get_option( $option_name, $default );
 		}
 
-		return $option;
+		return ( strlen( $option ) > 0 ) ? $option : $default;
 	}
 }

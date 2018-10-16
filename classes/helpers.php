@@ -2,7 +2,7 @@
 
 namespace WP_Timeliner;
 
-use WP_Timeliner\Options\Options;
+use WP_Timeliner\Admin\Options\Options;
 
 
 if ( ! defined( 'ABSPATH' ) ) {
