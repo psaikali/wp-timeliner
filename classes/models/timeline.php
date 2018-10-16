@@ -3,8 +3,6 @@
 namespace WP_Timeliner\Models;
 
 use WP_Timeliner\Schema\Taxonomy_Timeline;
-use WP_Timeliner\Helpers;
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 abstract class Abstract_Term {
 	use Magic_Getter;
-	
+
 	/**
 	 * The taxonomy we are dealing with
 	 *
