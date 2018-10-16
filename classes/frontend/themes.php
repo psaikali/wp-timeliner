@@ -3,6 +3,7 @@
 namespace WP_Timeliner\Frontend;
 
 use WP_Timeliner\Helpers;
+use WP_Timeliner\Common\Traits\Is_Singleton;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,49 +13,45 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Manage the timeline visual themes
  */
 class Themes {
-	protected static $themes = null;
+	use Is_Singleton;
 
 	/**
-	 * Default free timeline themes.
-	 * Key is the theme slug, value is the class name to be used.
+	 * List of available themes.
 	 *
-	 * @var array
+	 * @var null|array
 	 */
-	protected static $default_themes = [
-		'left'  => '\WP_Timeliner\Themes\Left\Left_Theme',
-		'right' => '\WP_Timeliner\Themes\Right\Right_Theme',
-		'snake' => '\WP_Timeliner\Themes\Snake\Snake_Theme',
-	];
+	protected $themes = null;
 
 	/**
 	 * Get the available timeline themes.
 	 *
 	 * @return array An array of instantiated Theme objects.
 	 */
-	public static function get_themes() {
-		if ( is_null( self::$themes ) ) {
-			$themes_classes = apply_filters( 'wpt.timeline.themes', self::get_default_themes() );
-			$themes         = [];
-
-			foreach ( $themes_classes as $theme_slug => $theme_class ) {
-				if ( class_exists( $theme_class ) ) {
-					$themes[ $theme_slug ] = new $theme_class();
-				}
-			}
-
-			self::$themes = $themes;
+	public function get_themes() {
+		if ( is_null( $this->themes ) ) {
+			$this->themes = [
+				'left'  => new \WP_Timeliner\Themes\Left\Left_Theme(),
+				'right' => new \WP_Timeliner\Themes\Right\Right_Theme(),
+				'snake' => new \WP_Timeliner\Themes\Snake\Snake_Theme(),
+			];
 		}
 
-		Helpers::debug( $themes );
-		return self::$themes;
+		return apply_filters( 'wpt.timeline.themes', $this->themes );
 	}
 
 	/**
-	 * Return a list of our default themes.
+	 * Retrieve a single theme object from a slug.
 	 *
-	 * @return array Default themes.
+	 * @param string $theme_slug
+	 * @return Abstract_Theme A theme object.
 	 */
-	protected static function get_default_themes() {
-		return self::$default_themes;
+	public function get_theme( $theme_slug ) {
+		$themes = $this->get_themes();
+
+		if ( array_key_exists( $theme_slug, $themes ) ) {
+			return $themes[ $theme_slug ];
+		}
+
+		return null;
 	}
 }
