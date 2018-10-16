@@ -3,9 +3,7 @@
 namespace WP_Timeliner\Frontend;
 
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
-use WP_Timeliner\Helpers;
 use WP_Timeliner\Schema\Taxonomy_Timeline;
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -21,7 +19,6 @@ class Templates implements Has_Hooks {
 	 * Register necessary hooks.
 	 */
 	public function hooks() {
-		//add_filter( 'archive_template', [ $this, 'load_timeliner_template' ] );
 		add_filter( 'template_include', [ $this, 'load_timeliner_template' ] );
 	}
 

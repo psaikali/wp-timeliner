@@ -12,7 +12,7 @@ use WP_Timeliner\Helpers;
 /**
  * Metaboxes & fields helper class.
  */
-abstract class Abstract_Fields {
+ abstract class Abstract_Fields {
 	/**
 	 * Register Carbon Fields fields.
 	 */

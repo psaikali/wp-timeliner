@@ -38,7 +38,7 @@ class Fields_Timeline extends Abstract_Fields implements Has_Hooks {
 	 */
 	protected function fields_for_timeline_settings() {
 		$fields         = [];
-		$themes_classes = Themes::get_themes();
+		$themes_classes = Themes::get_instance()->get_themes();
 
 		$themes = array_map(
 			function( $theme ) {

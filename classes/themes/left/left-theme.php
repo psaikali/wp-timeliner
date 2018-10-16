@@ -16,12 +16,4 @@ class Left_Theme extends Abstract_Theme {
 	public function get_icon() {
 		return Helpers::asset_image( 'theme-left.png' );
 	}
-	
-	public function display_timeline( \WP_Timeliner\Models\Timeline $timeline ) {
-		
-	}
-	
-	public function display_achievement( \WP_Timeliner\Models\Achievement $achievement ) {
-		
-	}
 }
