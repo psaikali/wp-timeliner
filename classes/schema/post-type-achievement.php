@@ -37,9 +37,10 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 					'excerpt',
 					'thumbnail',
 				],
-				'menu_icon' => 'dashicons-exerpt-view',
-				'public'    => true,
-				'rewrite'   => [
+				'menu_icon'   => 'dashicons-exerpt-view',
+				'public'      => true,
+				'has_archive' => false,
+				'rewrite'     => [
 					'slug'       => $this->get_slug(),
 					'with_front' => true,
 				],
