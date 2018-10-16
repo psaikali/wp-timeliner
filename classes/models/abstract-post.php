@@ -4,6 +4,7 @@ namespace WP_Timeliner\Models;
 
 use Carbon_Fields\Helper\Helper;
 use WP_Timeliner\Common\Traits\Magic_Getter;
+use WP_Timeliner\Helpers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -151,5 +152,29 @@ abstract class Abstract_Post {
 	 */
 	public function has_thumbnail() {
 		return has_post_thumbnail( $this->get_id() );
+	}
+
+	/**
+	 * Get an enhanced list of terms assigned to post.
+	 *
+	 * @todo Check if taxonomy is hierarchical and maybe include children/parent.
+	 * @param string $taxonomy The taxonomy to look for terms.
+	 * @return array An array of objects containing data about terms.
+	 */
+	public function get_terms( $taxonomy = 'category' ) {
+		if ( ! taxonomy_exists( $taxonomy ) ) {
+			throw new \Exception( sprintf( '%1$s taxonomy does not exist.', $taxonomy ) );
+		}
+
+		$terms           = wp_get_object_terms( $this->get_id(), $taxonomy );
+		$potential_class = Helpers::get_class_name_from( $taxonomy );
+
+		if ( $potential_class && class_exists( $potential_class ) ) {
+			return array_map( function( $term ) use ( $potential_class ) {
+				return ( new $potential_class( $term ) );
+			}, $terms );
+		}
+
+		return $terms;
 	}
 }

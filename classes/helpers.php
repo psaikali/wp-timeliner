@@ -66,4 +66,20 @@ class Helpers {
 	public static function get_option( $option, $default = null, $carbon = true ) {
 		return Options::get( $option, $default, $carbon );
 	}
+
+	/**
+	 * Retrieve a full class name from a simple "slug"
+	 *
+	 * @param string $name
+	 * @return string Full class name.
+	 */
+	public static function get_class_name_from( $name ) {
+		$classes = [
+			'wpt-tag'         => 'WP_Timeliner\Models\Tag',
+			'wpt-timeline'    => 'WP_Timeliner\Models\Timeline',
+			'wpt-achievement' => 'WP_Timeliner\Models\Achievement',
+		];
+
+		return array_key_exists( $name, $classes ) ? $classes[ $name ] : false;
+	}
 }
