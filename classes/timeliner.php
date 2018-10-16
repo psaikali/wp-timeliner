@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
+use WP_Timeliner\Common\Traits\Is_Singleton;
 
 /**
  * Our plugin loader, in charge of infrastructure stuff such as:
@@ -14,7 +15,8 @@ use WP_Timeliner\Common\Interfaces\Has_Hooks;
  * - loading localized languages files
  * - enqueueing scripts
  */
-class Timeliner implements Has_Hooks {
+class Timeliner {
+	use Is_Singleton;
 
 	/**
 	 * Fire our plugin: load hooks, localize language files, register assets
@@ -22,9 +24,8 @@ class Timeliner implements Has_Hooks {
 	 * @return void
 	 */
 	public function fire() {
-		//$this->include_libraries();
+		$this->hooks();
 		$hooks = new Setup\Register_Hooks( __NAMESPACE__ );
-		//$assets = new Setup\Enqueue_Assets();
 	}
 
 	/**
@@ -51,23 +52,11 @@ class Timeliner implements Has_Hooks {
 	}
 
 	/**
-	 * Include our libraries manually, because using Composer could be risky in case
+	 * Include CarbonFields library manually, because using Composer could be risky in case
 	 * of a shared dependency with another plugin.
 	 *
 	 * @return void
 	 */
-	protected function include_libraries() {
-		// Include CarbonFields library if it does not exist.
-		// if ( ! class_exists( '\Carbon_Fields' ) ) {
-		// 	require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-plugins' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-		// 	require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-icon-field' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-		// }
-
-		// // Register a new CarbonFields Icon field type.
-		// require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-icon-field' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'Icon_Field.php';
-		// require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-icon-field' . DIRECTORY_SEPARATOR . 'field.php';
-	}
-
 	public function boot_carbon_fields() {
 		if ( ! class_exists( '\Carbon_Fields' ) ) {
 			require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'libraries' . DIRECTORY_SEPARATOR . 'carbon-fields-plugins' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';

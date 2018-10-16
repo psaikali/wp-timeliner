@@ -4,6 +4,7 @@ use WP_Timeliner\Models\Timeline;
 use WP_Timeliner\Models\Achievement;
 use WP_Timeliner\Schema\Taxonomy_Timeline;
 use WP_Timeliner\Schema\Post_Type_Achievement;
+use WP_Timeliner\Timeliner;
 
 /**
  * Return a usable Timeline model.
@@ -49,4 +50,13 @@ function wpt_achievement( $achievement = null ) {
 	}
 
 	return null;
+}
+
+/**
+ * Access our plugin singleton
+ *
+ * @return WP_Timeliner\Timeliner A plugin instance.
+ */
+function wp_timeliner() {
+	return Timeliner::get_instance();
 }

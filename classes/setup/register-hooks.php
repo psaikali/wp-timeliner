@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
+use WP_Timeliner\Helpers;
 
 /**
  * The central place to list our classes triggering hooks.
@@ -18,7 +19,6 @@ class Register_Hooks {
 	 * @var array
 	 */
 	private $classes = [
-		'Timeliner',
 		'Admin\Options\Options',
 		'Schema\Post_Type_Achievement',
 		'Schema\Taxonomy_Timeline',

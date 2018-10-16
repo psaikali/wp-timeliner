@@ -39,18 +39,17 @@ require_once TIMELINER_DIR . DIRECTORY_SEPARATOR . 'autoloader.php';
 Autoloader::register();
 
 /**
- * Activation and de-activation hooks
- */
-register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Timeliner', 'activate' ) );
-register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Timeliner', 'deactivate' ) );
-
-/**
  * Include our globally usable functions.
  */
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
 /**
+ * Activation and de-activation hooks
+ */
+register_activation_hook( __FILE__, array( wp_timeliner(), 'activate' ) );
+register_deactivation_hook( __FILE__, array( wp_timeliner(), 'deactivate' ) );
+
+/**
  * Fire the fun stuff!
  */
-$plugin = new Timeliner();
-add_action( 'plugins_loaded', array( $plugin, 'fire' ) );
+add_action( 'plugins_loaded', array( wp_timeliner(), 'fire' ) );
