@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use WP_Timeliner\Schema\Post_Type_Achievement;
+use WP_Timeliner\Schema\Taxonomy_Tag;
 
 /**
  * A model to get easy access to Achievement posts data.
@@ -90,6 +91,6 @@ class Achievement extends Abstract_Post {
 	 * @return array Array of WP_Timeliner\Models\Tags
 	 */
 	public function get_tags() {
-		return [];
+		return $this->get_terms( Taxonomy_Tag::TAXONOMY );
 	}
 }
