@@ -3,6 +3,8 @@
 namespace WP_Timeliner\Models;
 
 use WP_Timeliner\Schema\Taxonomy_Timeline;
+use WP_Timeliner\Frontend\Themes;
+use WP_Timeliner\Queries\Achievement;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,7 +27,7 @@ class Timeline extends Abstract_Term {
 	 * @return string The theme used.
 	 */
 	public function get_theme() {
-		return $this->get_meta( 'timeline_theme' );
+		return Themes::get_instance()->get_theme( $this->get_meta( 'timeline_theme' ) );
 	}
 
 	/**
@@ -53,5 +55,14 @@ class Timeline extends Abstract_Term {
 	 */
 	public function get_button_label() {
 		return $this->get_meta( 'timeline_button_text' );
+	}
+
+	/**
+	 * Get timeline achievements
+	 *
+	 * @return array Array of WP_Timeliner\Models\Achievement.
+	 */
+	public function get_achievements() {
+		return Achievement::get_achievements_for_timeline( $this->get_id() );
 	}
 }

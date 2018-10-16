@@ -39,6 +39,13 @@ class Timeline extends Abstract_Shortcode {
 	public function render( $attributes, $content ) {
 		$timeline = Timeline_Query::find_for( $attributes->id );
 
-		// Render the timeline.
+		if ( is_null( $timeline ) ) {
+			return;
+		}
+
+		$theme        = $timeline->get_theme();
+		$achievements = $timeline->get_achievements();
+
+		$theme->display_timeline( $timeline, $achievements );
 	}
 }
