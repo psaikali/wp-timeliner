@@ -48,7 +48,7 @@ abstract class Abstract_Theme {
 	 *
 	 * @param \WP_Timeliner\Models\Achievement $achievement
 	 */
-	public function display_achievement( \WP_Timeliner\Models\Achievement $achievement ) {
+	public function display_achievement( \WP_Timeliner\Models\Achievement $achievement, \WP_Timeliner\Models\Timeline $timeline ) {
 		$template = $this->get_templates_path() . DIRECTORY_SEPARATOR . 'achievement.php';
 
 		if ( file_exists( $template ) ) {
