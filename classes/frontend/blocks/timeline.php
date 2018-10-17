@@ -42,6 +42,10 @@ class Timeline implements Has_Hooks {
 	 * @return string The timeline output.
 	 */
 	public function render_timeline_block( $attributes ) {
+		if ( ! isset( $attributes['timelineId'] ) ) {
+			return;
+		}
+
 		$timeline = Timeline_Query::find_for( (int) $attributes['timelineId'] );
 
 		if ( is_null( $timeline ) ) {
