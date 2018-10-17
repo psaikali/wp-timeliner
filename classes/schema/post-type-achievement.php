@@ -44,7 +44,8 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 					'slug'       => $this->get_slug(),
 					'with_front' => true,
 				],
-				'labels'    => [
+				'show_in_rest' => true,
+				'labels'       => [
 					'menu_name'    => esc_html__( 'Timelines', 'wp-timeliner' ),
 					'add_new'      => esc_html__( 'New Achievement', 'wp-timeliner' ),
 					'add_new_item' => esc_html__( 'New Achievement', 'wp-timeliner' ),
