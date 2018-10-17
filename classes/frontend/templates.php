@@ -22,6 +22,12 @@ class Templates implements Has_Hooks {
 		add_filter( 'template_include', [ $this, 'load_timeliner_template' ] );
 	}
 
+	/**
+	 * Load our timeliner taxonomy timeline archive file
+	 *
+	 * @param string $template The template file that WP would normally use.
+	 * @return string A new template file path.
+	 */
 	public function load_timeliner_template( $template ) {
 		if ( is_tax( Taxonomy_Timeline::TAXONOMY ) ) {
 			$template_file_name = sprintf( '%1$s.php', self::TEMPLATE_ARCHIVE_TIMELINE );

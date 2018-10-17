@@ -20,7 +20,7 @@ class Themes {
 	 *
 	 * @var null|array
 	 */
-	protected $themes = null;
+	protected static $themes = null;
 
 	/**
 	 * Get the available timeline themes.
@@ -28,15 +28,15 @@ class Themes {
 	 * @return array An array of instantiated Theme objects.
 	 */
 	public function get_themes() {
-		if ( is_null( $this->themes ) ) {
-			$this->themes = [
+		if ( is_null( self::$themes ) ) {
+			self::$themes = [
 				'left'  => new \WP_Timeliner\Themes\Left\Left_Theme(),
 				'right' => new \WP_Timeliner\Themes\Right\Right_Theme(),
 				'snake' => new \WP_Timeliner\Themes\Snake\Snake_Theme(),
 			];
 		}
 
-		return apply_filters( 'wpt.timeline.themes', $this->themes );
+		return apply_filters( 'wpt.timeline.themes', self::$themes );
 	}
 
 	/**
