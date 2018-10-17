@@ -56,10 +56,12 @@ abstract class Abstract_Shortcode implements Has_Hooks {
 	 * @return string
 	 */
 	public function display( $attributes = [], $content = '' ) {
+		ob_start();
 		$this->render(
 			(object) $this->get_attributes( $attributes ),
 			$content
 		);
+		return ob_get_clean();
 	}
 
 	/**
