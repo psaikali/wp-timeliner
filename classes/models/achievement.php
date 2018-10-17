@@ -30,6 +30,13 @@ class Achievement extends Abstract_Post {
 	}
 
 	/**
+	 * Proxy function to has_excerpt()
+	 */
+	public function has_summary() {
+		return $this->has_excerpt();
+	}
+
+	/**
 	 * Get the Achievement start date.
 	 *
 	 * @return int The start date timestamp
@@ -64,6 +71,13 @@ class Achievement extends Abstract_Post {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Does this achievement have an icon?
+	 */
+	public function has_icon() {
+		return ! is_null( $this->get_icon() );
 	}
 
 	/**
