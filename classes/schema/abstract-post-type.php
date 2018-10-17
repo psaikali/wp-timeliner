@@ -277,7 +277,7 @@ abstract class Abstract_Post_Type {
 	 * @return string        Modified placeholder text
 	 */
 	public function title( $title ) {
-		$screen = get_current_screen();
+		$screen = \get_current_screen();
 
 		if ( isset( $screen->post_type ) && $screen->post_type == $this->post_type ) {
 			return sprintf( __( '%s Title', 'wp-timeliner' ), $this->singular );
@@ -292,7 +292,7 @@ abstract class Abstract_Post_Type {
 	 * @return boolean
 	 */
 	protected function is_edit_admin_page() {
-		$screen = get_current_screen();
+		$screen = \get_current_screen();
 
 		return ( isset( $screen->post_type ) && $screen->post_type == $this->post_type );
 		//return ( isset( $_GET['post_type'] ) && $_GET['post_type'] === SELF::POST_TYPE ) || ( isset( $_GET['post'] ) && get_post_type( (int) $_GET['post'] ) === SELF::POST_TYPE );
