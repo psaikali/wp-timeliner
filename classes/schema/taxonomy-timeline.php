@@ -33,6 +33,7 @@ class Taxonomy_Timeline extends Abstract_Taxonomy implements Has_Hooks {
 			[
 				'public'       => $this->has_archives_pages(),
 				'hierarchical' => false,
+				'show_in_rest' => true,
 				'rewrite'      => [
 					'slug'       => $this->get_slug(),
 					'with_front' => false,
