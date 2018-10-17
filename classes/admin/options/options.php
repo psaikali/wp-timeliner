@@ -109,11 +109,11 @@ class Options implements Has_Hooks {
 					->set_help_text( __( 'By default, timelines are manually displayed via a shortcode or Gutenberg block. By enabling this setting, each timeline will automatically get its own URL.', 'wp-timeliner' ) );
 
 		$fields[] = Field::make( 'text', $this->field( 'achievement_slug' ), __( 'Achievement URL prefix', 'wp-timeliner' ) )
-					->set_help_text( __( 'Override the default <em>/achievement/</em> URL slug for single achievements.', 'wp-timeliner' ) )
+					->set_help_text( __( 'Override the URL slug for single achievement pages. Leave blank for default <em>achievement</em> value.', 'wp-timeliner' ) )
 					->set_width( 50 );
 
 		$fields[] = Field::make( 'text', $this->field( 'timeline_slug' ), __( 'Timeline URL prefix', 'wp-timeliner' ) )
-					->set_help_text( __( 'Override the default <em>/timeline/</em> URL slug for timeline archive pages.', 'wp-timeliner' ) )
+					->set_help_text( __( 'Override the URL slug for timeline archive pages. Leave blank for default <em>timeline</em> value.', 'wp-timeliner' ) )
 					->set_width( 50 )
 					->set_conditional_logic( [
 						[
