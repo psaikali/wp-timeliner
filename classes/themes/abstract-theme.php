@@ -55,4 +55,51 @@ abstract class Abstract_Theme {
 			include $template;
 		}
 	}
+
+	/**
+	 * Display date in correct format
+	 *
+	 * @param \WP_Timeliner\Models\Achievement $achievement
+	 * @param \WP_Timeliner\Models\Timeline $timeline
+	 * @return string The date string to display.
+	 */
+	public function display_date( \WP_Timeliner\Models\Achievement $achievement, \WP_Timeliner\Models\Timeline $timeline ) {
+		$timeline_date_format = $timeline->get_date_format();
+
+		switch ( $timeline_date_format ) {
+			case 'year':
+				$date_format = 'Y';
+				break;
+
+			case 'month_year':
+				$date_format = 'm-Y';
+				break;
+
+			case 'full_date':
+			default:
+				$date_format = get_option( 'date_format' );
+				break;
+		}
+
+		$date_format = apply_filters( 'wpt.timeline.date_format', $date_format, $timeline_date_format, $achievement, $timeline );
+
+		if ( $achievement->has_end_date() ) {
+			$string_format = apply_filters( 'wpt.timeline.date_string_format_for_two_dates', __( 'From %1$s to %2$s', 'wp-timeliner' ), $timeline_date_format, $achievement, $timeline );
+
+			$displayed_date = sprintf(
+				$string_format,
+				date( $date_format, $achievement->get_start_date() ),
+				date( $date_format, $achievement->get_end_date() )
+			);
+		} else {
+			$string_format = apply_filters( 'wpt.timeline.date_string_format_for_one_date', '%1$s', $timeline_date_format, $achievement, $timeline );
+
+			$displayed_date = sprintf(
+				$string_format,
+				date( $date_format, $achievement->get_start_date() )
+			);
+		}
+
+		return $displayed_date;
+	}
 }

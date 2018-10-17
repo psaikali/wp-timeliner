@@ -55,6 +55,15 @@ class Achievement extends Abstract_Post {
 	}
 
 	/**
+	 * Does it have a end date?
+	 *
+	 * @return boolean
+	 */
+	public function has_end_date() {
+		return strlen( $this->get_end_date() ) > 0;
+	}
+
+	/**
 	 * Get the Achievement icon
 	 *
 	 * @return string The icon
