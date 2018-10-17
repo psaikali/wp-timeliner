@@ -40,6 +40,13 @@ abstract class Abstract_Post {
 	protected $object_id;
 
 	/**
+	 * Store meta values throughout our session.
+	 *
+	 * @var array
+	 */
+	protected static $meta_values = [];
+
+	/**
 	 * Sub-classes are required to implement this in order to define the desired post type.
 	 */
 	abstract protected function set_post_type();
@@ -87,7 +94,11 @@ abstract class Abstract_Post {
 	 * @return mixed The post meta value.
 	 */
 	public function get_meta( $meta_key ) {
-		return Helper::get_value( $this->object_id, 'post_meta', '', $meta_key );
+		if ( ! isset( self::$meta_values[ $meta_key ] ) ) {
+			self::$meta_values[ $meta_key ] = Helper::get_value( $this->object_id, 'post_meta', '', $meta_key );
+		}
+
+		return self::$meta_values[ $meta_key ];
 	}
 
 	/**
@@ -109,6 +120,15 @@ abstract class Abstract_Post {
 	}
 
 	/**
+	 * Has excerpt?
+	 *
+	 * @return boolean
+	 */
+	public function has_excerpt() {
+		return strlen( $this->get_excerpt() ) > 0;
+	}
+
+	/**
 	 * Get title.
 	 *
 	 * @return string The post title.
@@ -124,6 +144,33 @@ abstract class Abstract_Post {
 	 */
 	public function get_slug() {
 		return $this->get_post()->post_name;
+	}
+
+	/**
+	 * Get permalink.
+	 *
+	 * @return string The post permalink.
+	 */
+	public function get_permalink() {
+		return get_permalink( $this->get_id() );
+	}
+
+	/**
+	 * Proxy to get permalink (url).
+	 *
+	 * @return string The post permalink.
+	 */
+	public function get_url() {
+		return $this->get_permalink();
+	}
+
+	/**
+	 * Proxy to get permalink (link).
+	 *
+	 * @return string The post permalink.
+	 */
+	public function get_link() {
+		return $this->get_permalink();
 	}
 
 	/**
