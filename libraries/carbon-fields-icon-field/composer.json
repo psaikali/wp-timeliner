@@ -1,0 +1,16 @@
+{
+    "name": "htmlburger/carbon-field-icon",
+    "description": "Carbon Fields extension, that adds a Icon field type.",
+    "keywords": ["wordpress", "carbon-field", "carbon-field-icon"],
+    "type": "library",
+    "license": "GPL-2.0+",
+    "authors": [],
+    "autoload": {
+        "files": [
+            "field.php"
+        ],
+        "psr-4": {
+            "Carbon_Field_Icon\\": "core/"
+        }
+    }
+}

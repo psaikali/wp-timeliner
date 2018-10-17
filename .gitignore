@@ -1,6 +1,6 @@
 *.log
 .htaccess
-
+node_modules
 *.log
 .DS_Store
 .Spotlight-V100
@@ -11,3 +11,4 @@ Thumbs.db
 phpunit.xml
 vendor
 !libraries/carbon-fields-plugins/vendor
+!libraries/carbon-fields-icon-field/vendor
