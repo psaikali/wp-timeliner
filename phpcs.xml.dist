@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<ruleset name="WP Timeliner Coding Standards" namespace="WP_Timeliner">
+	<description>Coding standard for WP Timeliner library.</description>
+
+	<!--###########################
+		Folders to scan
+	############################-->
+	<file>./classes/*</file>
+	<file>wp-timeliner.php</file>
+
+	<!--###########################
+		Set of rules to use
+	############################-->
+	<rule ref="WordPress" />
+
+	<!--###########################
+		Modifications
+	############################-->
+	<!-- Adapt to be able to use namespaced hooks in dot notation such as "multilingualpress.active_taxonomies". -->
+	<rule ref="WordPress.NamingConventions.ValidHookName">
+		<properties>
+			<property name="additionalWordDelimiters" value="." />
+		</properties>
+	</rule>
+
+	<!--###########################
+		Exceptions
+	############################-->
+	<rule ref="WordPress">
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
+	</rule>
+	
+	 <rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<exclude-pattern>/classes/*</exclude-pattern>
+		<exclude-pattern>/tests/*</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>/classes/*</exclude-pattern>
+		<exclude-pattern>/tests/*</exclude-pattern>
+	</rule>
+</ruleset>
