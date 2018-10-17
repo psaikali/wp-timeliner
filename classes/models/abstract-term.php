@@ -41,7 +41,7 @@ abstract class Abstract_Term {
 	 *
 	 * @var array
 	 */
-	protected static $meta_values = [];
+	protected $meta_values = [];
 
 	/**
 	 * Sub-classes are required to implement this in order to define the desired taxonomy.
@@ -91,11 +91,11 @@ abstract class Abstract_Term {
 	 * @return mixed The post meta value.
 	 */
 	public function get_meta( $meta_key ) {
-		if ( ! isset( self::$meta_values[ $meta_key ] ) ) {
-			self::$meta_values[ $meta_key ] = Helper::get_value( $this->object_id, 'term_meta', '', $meta_key );
+		if ( ! isset( $this->meta_values[ $meta_key ] ) ) {
+			$this->meta_values[ $meta_key ] = Helper::get_value( $this->get_id(), 'term_meta', '', $meta_key );
 		}
 
-		return self::$meta_values[ $meta_key ];
+		return $this->meta_values[ $meta_key ];
 	}
 
 	/**
