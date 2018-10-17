@@ -9,7 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
+use WP_Timeliner\Helpers;
 
+/**
+ * Handling stuff related to plugin admin options page.
+ */
 class Options implements Has_Hooks {
 	/**
 	 * The options page slug
@@ -78,7 +82,7 @@ class Options implements Has_Hooks {
 	public function get_tabs( $tabs ) {
 		return [
 			'general'  => __( 'General', 'wp-timeliner' ),
-			'advanced' => __( 'Advanced', 'wp-timeliner' ),
+			//'advanced' => __( 'Advanced', 'wp-timeliner' ),
 		];
 	}
 
@@ -92,8 +96,33 @@ class Options implements Has_Hooks {
 		$fields = [];
 
 		// Header blockquote.
-		$fields[] = Field::make( 'rich_text', $this->field( 'header_quote' ), 'Top header quote' )
-					->set_help_text( __( 'This content will be displayed in the top part of your site, below the main content of the page.', 'wp-timeliner' ) );
+		$fields[] = Field::make( 'checkbox', $this->field( 'enable_timeline_archive_pages' ), __( 'Enable timeline archive pages', 'wpt-timeliner' ) )
+					// ->set_option_value( 'on' )
+					->set_help_text( __( 'By default, timelines are manually displayed via a shortcode or Gutenberg block. By enabling this setting, each timeline will automatically get its own URL.', 'wp-timeliner' ) );
+
+		$advanced_html_warning = sprintf(
+			'<div class="wpt-alert warning"><h4>%1$s</h4><p>%2$s</p></div>',
+			__( 'Warning!', 'wp-timeliner' ),
+			__( 'The settings below are for experienced WordPress users only. Please double check before altering one of this option and do not forget to flush rewrite rules and setup proper redirections afterwards.', 'wp-timeliner' )
+		);
+
+		$fields[] = Field::make( 'html', 'advanced_html_warning' )
+					->set_html( $advanced_html_warning );
+
+		$fields[] = Field::make( 'text', $this->field( 'achievement_slug' ), __( 'Achievement URL prefix', 'wp-timeliner' ) )
+					->set_help_text( __( 'Override the default <em>/achievement/</em> URL slug for single achievements.', 'wp-timeliner' ) )
+					->set_width( 50 );
+
+		$fields[] = Field::make( 'text', $this->field( 'timeline_slug' ), __( 'Timeline URL prefix', 'wp-timeliner' ) )
+					->set_help_text( __( 'Override the default <em>/timeline/</em> URL slug for timeline archive pages.', 'wp-timeliner' ) )
+					->set_width( 50 )
+					->set_conditional_logic( [
+						[
+							'field'   => $this->field( 'enable_timeline_archive_pages' ),
+							// 'value'   => 'on',
+							'compare' => '!=',
+						]
+					] );
 
 		return $fields;
 	}
@@ -106,22 +135,6 @@ class Options implements Has_Hooks {
 	 */
 	public function fields_for_options_tab_advanced() {
 		$fields = [];
-
-		$advanced_html_warning = sprintf(
-			'<div class="wpt-alert warning"><p>%1$s</p></div>',
-			__( 'These settings are for experienced WordPress users only. Please double check before altering one of this option.', 'wp-timeliner' )
-		);
-
-		$fields[] = Field::make( 'html', 'advanced_html_warning' )
-					->set_html( $advanced_html_warning );
-
-		$fields[] = Field::make( 'text', $this->field( 'achievement_slug' ), 'Achievement URL prefix' )
-					->set_help_text( __( 'Override the default <em>/achievement/</em> URL slug for single achievements.', 'wp-timeliner' ) )
-					->set_width( 50 );
-
-		$fields[] = Field::make( 'text', $this->field( 'timeline_slug' ), 'Timeline URL prefix' )
-					->set_help_text( __( 'Override the default <em>/timeline/</em> URL slug for timeline archive pages.', 'wp-timeliner' ) )
-					->set_width( 50 );
 
 		return $fields;
 	}
