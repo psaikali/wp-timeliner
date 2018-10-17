@@ -13,6 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Left-aligned timeline theme
  */
 class Left_Theme extends Abstract_Theme {
+	/**
+	 * Path to the icon used to choose this theme in the back-end.
+	 *
+	 * @return string Path to an actual image file.
+	 */
 	public function get_icon() {
 		return Helpers::asset_image( 'theme-left.png' );
 	}
