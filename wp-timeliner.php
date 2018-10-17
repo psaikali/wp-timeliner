@@ -25,8 +25,9 @@ define( 'TIMELINER_URL', plugin_dir_url( __FILE__ ) );
 define( 'TIMELINER_DIR', plugin_dir_path( __FILE__ ) );
 define( 'TIMELINER_PLUGIN_DIRNAME', basename( rtrim( dirname( __FILE__ ), '/' ) ) );
 define( 'TIMELINER_BASENAME', plugin_basename( __FILE__ ) );
-define( 'TIMELINER_ASSETS_URL', TIMELINER_URL . '/assets' );
-define( 'TIMELINER_THEMES_DIR', TIMELINER_DIR . '/classes/themes' );
+define( 'TIMELINER_ASSETS_URL', TIMELINER_URL . 'assets' );
+define( 'TIMELINER_THEMES_DIR', TIMELINER_DIR . 'classes/themes' );
+define( 'TIMELINER_THEMES_URL', TIMELINER_URL . 'classes/themes' );
 
 /**
  * Load Composer dependencies.

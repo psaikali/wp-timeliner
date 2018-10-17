@@ -19,6 +19,6 @@ class Snake_Theme extends Abstract_Theme {
 	 * @return string Path to an actual image file.
 	 */
 	public function get_icon() {
-		return Helpers::asset_image( 'theme-snake.png' );
+		return trailingslashit( TIMELINER_THEMES_URL ) . 'minimalist' . DIRECTORY_SEPARATOR . 'theme-icon.png';
 	}
 }

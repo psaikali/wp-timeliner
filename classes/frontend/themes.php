@@ -30,9 +30,8 @@ class Themes {
 	public function get_themes() {
 		if ( is_null( self::$themes ) ) {
 			self::$themes = [
-				'left'  => new \WP_Timeliner\Themes\Left\Left_Theme(),
-				'right' => new \WP_Timeliner\Themes\Right\Right_Theme(),
-				'snake' => new \WP_Timeliner\Themes\Snake\Snake_Theme(),
+				'minimalist' => new \WP_Timeliner\Themes\Minimalist\Minimalist_Theme(),
+				'snake'      => new \WP_Timeliner\Themes\Snake\Snake_Theme(),
 			];
 		}
 
