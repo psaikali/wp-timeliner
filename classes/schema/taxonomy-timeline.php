@@ -31,6 +31,7 @@ class Taxonomy_Timeline extends Abstract_Taxonomy implements Has_Hooks {
 				self::TAXONOMY,
 			],
 			[
+				'public'       => $this->has_archives_pages(),
 				'hierarchical' => false,
 				'rewrite'      => [
 					'slug'       => $this->get_slug(),
@@ -60,6 +61,15 @@ class Taxonomy_Timeline extends Abstract_Taxonomy implements Has_Hooks {
 	 */
 	protected function get_slug() {
 		return sanitize_title_with_dashes( Helpers::get_option( 'timeline_slug', 'timeline', false ) );
+	}
+
+	/**
+	 * Should we enable the archives front-end pages?
+	 *
+	 * @return boolean User choice. Default to false.
+	 */
+	protected function has_archives_pages() {
+		return Helpers::get_option( 'enable_timeline_archive_pages', 'no', false ) === 'yes';
 	}
 
 	/**

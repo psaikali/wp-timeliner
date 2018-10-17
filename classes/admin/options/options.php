@@ -95,11 +95,6 @@ class Options implements Has_Hooks {
 	public function fields_for_options_tab_general() {
 		$fields = [];
 
-		// Header blockquote.
-		$fields[] = Field::make( 'checkbox', $this->field( 'enable_timeline_archive_pages' ), __( 'Enable timeline archive pages', 'wpt-timeliner' ) )
-					// ->set_option_value( 'on' )
-					->set_help_text( __( 'By default, timelines are manually displayed via a shortcode or Gutenberg block. By enabling this setting, each timeline will automatically get its own URL.', 'wp-timeliner' ) );
-
 		$advanced_html_warning = sprintf(
 			'<div class="wpt-alert warning"><h4>%1$s</h4><p>%2$s</p></div>',
 			__( 'Warning!', 'wp-timeliner' ),
@@ -108,6 +103,10 @@ class Options implements Has_Hooks {
 
 		$fields[] = Field::make( 'html', 'advanced_html_warning' )
 					->set_html( $advanced_html_warning );
+
+		$fields[] = Field::make( 'checkbox', $this->field( 'enable_timeline_archive_pages' ), __( 'Enable timeline archive pages', 'wpt-timeliner' ) )
+					// ->set_option_value( 'on' )
+					->set_help_text( __( 'By default, timelines are manually displayed via a shortcode or Gutenberg block. By enabling this setting, each timeline will automatically get its own URL.', 'wp-timeliner' ) );
 
 		$fields[] = Field::make( 'text', $this->field( 'achievement_slug' ), __( 'Achievement URL prefix', 'wp-timeliner' ) )
 					->set_help_text( __( 'Override the default <em>/achievement/</em> URL slug for single achievements.', 'wp-timeliner' ) )
