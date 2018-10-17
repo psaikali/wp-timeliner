@@ -18,3 +18,5 @@ libraries/**/.babelrc
 libraries/**/yarn.lock
 libraries/**/webpack.config.js
 libraries/**/package*.json
+assets/js/gutenberg/*
+!assets/js/gutenberg/dist/
