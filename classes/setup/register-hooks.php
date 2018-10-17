@@ -28,6 +28,7 @@ class Register_Hooks {
 		'Queries\Achievement',
 		'Frontend\Templates',
 		'Frontend\Shortcodes\Timeline',
+		'Frontend\Blocks\Timeline',
 	];
 
 	/**
