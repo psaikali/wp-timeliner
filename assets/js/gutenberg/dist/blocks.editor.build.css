@@ -10,10 +10,8 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-.wp-block-cgb-block-timeline {
-  background: #bada55;
-  border: 0.2rem solid #292929;
-  color: #292929;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem; }
+p.wpt-timeline-selection-displayed {
+  text-align: center;
+  background: #EAEAEA;
+  font-style: italic;
+  padding: .75rem .25em; }

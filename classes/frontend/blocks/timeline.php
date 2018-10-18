@@ -17,22 +17,42 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Timeline implements Has_Hooks {
 	public function hooks() {
-		add_action( 'init', [ $this, 'register_timeline_block' ] );
+		add_action( 'init', [ $this, 'register_timeline_gutenblock' ] );
+		//add_action( 'enqueue_block_editor_assets', [ $this, 'register_timeline_gutenblock_assets' ] );
 	}
 
 	/**
-	 * Register our timeline block
+	 * Register our timeline gutenblock
 	 */
-	public function register_timeline_block() {
-		wp_register_script( 'wpt-timeline-gutenblock', TIMELINER_ASSETS_URL . '/js/gutenberg/dist/blocks.build.js', [ 'wp-blocks', 'wp-element', 'wp-data', 'wp-components' ] );
-
+	public function register_timeline_gutenblock() {
 		register_block_type( 
 			'wp-timeliner/timeline', 
 			[ 
 				'editor_script'   => 'wpt-timeline-gutenblock',
-				'render_callback' => [ $this, 'render_timeline_block' ],
+				'render_callback' => [ $this, 'render_timeline_gutenblock' ],
 			] 
 		);
+
+		wp_register_script(
+			'wpt-timeline-gutenblock',
+			TIMELINER_ASSETS_URL . '/js/gutenberg/dist/blocks.build.js',
+			[ 'wp-blocks', 'wp-element', 'wp-data', 'wp-components' ]
+		);
+
+		wp_enqueue_style(
+			'wpt-timeline-block-editor-css',
+			TIMELINER_ASSETS_URL . '/js/gutenberg/dist/blocks.editor.build.css',
+			[ 'wp-edit-blocks' ]
+		);
+	}
+
+	/**
+	 * Register back-end gutenblock assets
+	 *
+	 * @todo
+	 */
+	public function register_timeline_gutenblock_assets() {
+		// Todo.
 	}
 
 	/**
@@ -41,11 +61,14 @@ class Timeline implements Has_Hooks {
 	 * @param array $attributes The gutenblock attributes.
 	 * @return string The timeline output.
 	 */
-	public function render_timeline_block( $attributes ) {
+	public function render_timeline_gutenlock( $attributes ) {
 		if ( ! isset( $attributes['timelineId'] ) ) {
 			return;
 		}
 
+		/**
+		 * @todo Shared logic with the shortcode outputing. Needs refactoring.
+		 */
 		$timeline = Timeline_Query::find_for( (int) $attributes['timelineId'] );
 
 		if ( is_null( $timeline ) ) {
