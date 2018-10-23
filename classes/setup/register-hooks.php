@@ -19,6 +19,7 @@ class Register_Hooks {
 	 * @var array
 	 */
 	private $classes = [
+		'Admin\Admin',
 		'Admin\Options\Options',
 		'Schema\Post_Type_Achievement',
 		'Schema\Taxonomy_Timeline',

@@ -1,0 +1,14 @@
+.taxonomy-wpt-timeline .carbon-radio-image-item {
+	width: 25%;
+}
+
+.taxonomy-wpt-timeline .carbon-radio-image-item .carbon-radio-image-holder {
+	background: #fff;
+	border-radius: 1rem;
+}
+
+.taxonomy-wpt-timeline .carbon-radio-image-item .carbon-radio-image-holder img {
+	max-width: 90%;
+	padding: 5%;
+	border: none;
+}
