@@ -16,9 +16,38 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @todo Make an abstract class for Gutenblocks.
  */
 class Timeline implements Has_Hooks {
+	const BLOCK_NAME = 'wp-timeliner/timeline';
+
 	public function hooks() {
 		add_action( 'init', [ $this, 'register_timeline_gutenblock' ] );
 		//add_action( 'enqueue_block_editor_assets', [ $this, 'register_timeline_gutenblock_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_timelines_themes_assets' ] );
+	}
+
+	/**
+	 * Load timelines themes assets by looping throught all current page Gutenblocks
+	 * and (maybe) loading our theme assets.
+	 * 
+	 * @todo Optimize this when Gutenberg will let us properly load block assets.
+	 */
+	public function load_timelines_themes_assets() {
+		if ( ! is_singular() || ! function_exists( 'gutenberg_parse_blocks' ) ) {
+			return;
+		}
+
+		global $post;
+
+		$timeline_blocks = array_filter( gutenberg_parse_blocks( $post->post_content ), function( $block ) {
+			return ( $block['blockName'] === self::BLOCK_NAME );
+		} );
+
+		foreach ( $timeline_blocks as $timeline_block ) {
+			if ( ! isset( $timeline_block['attrs']['timelineId'] ) ) {
+				continue;
+			}
+
+			wpt_timeline( (int) $timeline_block['attrs']['timelineId'] )->get_theme()->enqueue_assets();
+		}
 	}
 
 	/**
@@ -26,7 +55,7 @@ class Timeline implements Has_Hooks {
 	 */
 	public function register_timeline_gutenblock() {
 		register_block_type( 
-			'wp-timeliner/timeline', 
+			self::BLOCK_NAME, 
 			[ 
 				'editor_script'   => 'wpt-timeline-gutenblock',
 				'render_callback' => [ $this, 'render_timeline_gutenblock' ],
@@ -61,7 +90,7 @@ class Timeline implements Has_Hooks {
 	 * @param array $attributes The gutenblock attributes.
 	 * @return string The timeline output.
 	 */
-	public function render_timeline_gutenlock( $attributes ) {
+	public function render_timeline_gutenblock( $attributes ) {
 		if ( ! isset( $attributes['timelineId'] ) ) {
 			return;
 		}
