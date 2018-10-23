@@ -29,7 +29,7 @@
 	</footer>
 	<?php } ?>
 
-	<div class="wpt-icon" data-color="<?php echo esc_attr( $achievement->get_color() ); ?>">
+	<div class="wpt-icon" style="background-color: <?php echo esc_attr( $achievement->get_color() ); ?>;--icon-bg-color:<?php echo esc_attr( $achievement->get_color() ); ?>;">
 		<?php if ( $achievement->has_icon() ) { ?>
 		<i class="<?php echo esc_attr( $achievement->get_icon()->class ); ?>"></i>
 		<?php } ?>
