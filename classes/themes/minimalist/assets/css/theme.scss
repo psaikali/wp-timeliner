@@ -3,10 +3,13 @@
  */
 $border_color: #d1d5df;
 $border_width: .25rem;
-$padding_l: 1.5rem;
-$padding_b: $padding_l * 2;
+$padding_l: 1.75rem;
+$margin_b: $padding_l * 1.5;
+$inner_padding: $padding_l / 2;
 $title_font_size: 1.5rem;
 $date_font_size: .9rem;
+$icon_width: 2rem;
+$border_radius: $border_width;
 
 /**
  * Placeholders
@@ -27,11 +30,29 @@ section.wpt-timeline.wpt-theme-minimalist {
 	padding-left: $padding_l;
 
 	article.wpt-achievement {
+		$background: lighten( $border_color, 10% );
 		position: relative;
-		padding-bottom: $padding_b;
+		margin-bottom: $margin_b;
+		background: $background;
+		padding: $inner_padding $inner_padding $inner_padding $inner_padding * 1.5;
+		border-radius: 0 $border_radius $border_radius $border_radius;
+
+		&:before {
+			$t: .6rem;
+			content:"";
+			display: block;
+			position: absolute;
+			width:$t;
+			height:$t;
+			top: 0;
+			left:-$t;
+			border-top: $t*1.5 solid $background;
+			border-left: $t solid transparent;
+			border-right: $t solid transparent;
+		}
 
 		&:last-of-type {
-			padding-bottom: $padding_b / 3;
+			margin-bottom: $margin_b / 3;
 		}
 
 		header.wpt-title {
@@ -41,7 +62,10 @@ section.wpt-timeline.wpt-theme-minimalist {
 				padding:0;
 
 				a {
-					//color: #111;
+					&:not(:hover) {
+						color: inherit;
+						text-decoration: inherit;
+					}
 				}
 
 				&:before {
@@ -58,7 +82,7 @@ section.wpt-timeline.wpt-theme-minimalist {
 		}
 
 		div.wpt-summary {
-
+			
 		}
 
 		footer.wpt-read-more-button {
@@ -66,7 +90,7 @@ section.wpt-timeline.wpt-theme-minimalist {
 		}
 
 		div.wpt-icon {
-			$w: 2rem;
+			$w: $icon_width;
 			font-size: $w*0.6;
 			background-color: $border_color;
 			background-color: var(--icon-bg-color);
@@ -78,7 +102,8 @@ section.wpt-timeline.wpt-theme-minimalist {
 			border-radius:100%;
 			position: absolute;
 			left: - ( $padding_l + ( $w / 2 ) + ( $border_width / 2 ) );
-			top:0;
+			//top: $inner_padding;
+			top: - $w / 2.5;
 			z-index:20;
 			box-shadow: 0px 0px 0px $border_width/2 rgba( #fff, .75 );
 		}
