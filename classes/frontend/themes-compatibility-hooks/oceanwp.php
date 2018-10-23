@@ -2,6 +2,9 @@
 
 namespace WP_Timeliner\Compatibility\OceanWP;
 
+/**
+ * Markup before achievements loop
+ */
 function before_loop_markup() {
 	?>
 	<?php do_action( 'ocean_before_content_wrap' ); ?>
@@ -15,6 +18,9 @@ function before_loop_markup() {
 }
 add_action( 'wpt.template.before-loop', __NAMESPACE__ . '\before_loop_markup' );
 
+/**
+ * Markup after achievements loop
+ */
 function after_loop_markup() {
 	?>
 				<?php do_action( 'ocean_after_content_inner' ); ?>
