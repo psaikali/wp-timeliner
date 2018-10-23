@@ -4,6 +4,7 @@ namespace WP_Timeliner\Frontend;
 
 use WP_Timeliner\Common\Interfaces\Has_Hooks;
 use WP_Timeliner\Schema\Taxonomy_Timeline;
+use WP_Timeliner\Helpers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,6 +21,7 @@ class Templates implements Has_Hooks {
 	 */
 	public function hooks() {
 		add_filter( 'template_include', [ $this, 'load_timeliner_template' ] );
+		add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_current_theme_assets' ] );
 	}
 
 	/**
@@ -31,7 +33,7 @@ class Templates implements Has_Hooks {
 	public function load_timeliner_template( $template ) {
 		if ( is_tax( Taxonomy_Timeline::TAXONOMY ) ) {
 			$template_file_name = sprintf( '%1$s.php', self::TEMPLATE_ARCHIVE_TIMELINE );
-			$timeline           = wpt_timeline( get_queried_object() );
+			//$timeline           = wpt_timeline( get_queried_object() );
 			$template           = self::locate_template( $template_file_name );
 
 			return $template;
@@ -101,5 +103,21 @@ class Templates implements Has_Hooks {
 		include $located_template_file;
 
 		do_action( 'wpt.template.after-inclusion', $template_name, $template_path, $located_template_file, $args );
+	}
+
+	/**
+	 * Enqueue current timeline theme assets on timeline archive pages.
+	 *
+	 * @todo Do the same for shortcodes/Gutenblock.
+	 */
+	public function enqueue_current_theme_assets() {
+		if ( is_tax( Taxonomy_Timeline::TAXONOMY ) ) {
+			$timeline = wpt_timeline( get_queried_object() );
+			$theme    = $timeline->get_theme();
+
+			if ( method_exists( $theme, 'enqueue_assets' ) ) {
+				$theme->enqueue_assets();
+			}
+		}
 	}
 }
