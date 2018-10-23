@@ -40,7 +40,8 @@ class Minimalist_Theme extends Abstract_Theme {
 	 * Enqueue this theme assets (JS & CSS).
 	 */
 	public function enqueue_assets() {
-		//wp_enqueue_script( 'wpt-theme-minimalist-js', $this->get_assets_path() . '/js/theme.js', [], self::THEME_VERSION, true );
-		wp_enqueue_style( 'wpt-theme-minimalist-css', $this->get_assets_path() . '/css/theme.css', [], self::THEME_VERSION );
+		if ( apply_filters( 'wpt.theme.load_theme_css', true, 'minimalist' ) ) {
+			wp_enqueue_style( 'wpt-theme-minimalist-css', $this->get_assets_path() . '/css/theme.css', [], self::THEME_VERSION );
+		}
 	}
 }

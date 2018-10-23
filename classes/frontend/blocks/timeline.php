@@ -51,7 +51,7 @@ class Timeline implements Has_Hooks {
 			wpt_timeline( (int) $timeline_block['attrs']['timelineId'] )->get_theme()->enqueue_assets();
 		}
 
-		if ( $has_timeline ) {
+		if ( $has_timeline && apply_filters( 'wpt.theme.load_fontawesome', true ) ) {
 			wp_enqueue_style( 'wpt-fontawesome', '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], 470 );
 		}
 	}
