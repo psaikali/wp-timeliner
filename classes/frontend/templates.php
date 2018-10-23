@@ -20,6 +20,7 @@ class Templates implements Has_Hooks {
 	 * Register necessary hooks.
 	 */
 	public function hooks() {
+		add_action( 'init', [ $this, 'maybe_load_theme_compatibility_hooks' ] );
 		add_filter( 'template_include', [ $this, 'load_timeliner_template' ] );
 		add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_current_theme_assets' ] );
 	}
@@ -33,7 +34,6 @@ class Templates implements Has_Hooks {
 	public function load_timeliner_template( $template ) {
 		if ( is_tax( Taxonomy_Timeline::TAXONOMY ) ) {
 			$template_file_name = sprintf( '%1$s.php', self::TEMPLATE_ARCHIVE_TIMELINE );
-			//$timeline           = wpt_timeline( get_queried_object() );
 			$template           = self::locate_template( $template_file_name );
 
 			return $template;
@@ -118,6 +118,22 @@ class Templates implements Has_Hooks {
 			if ( method_exists( $theme, 'enqueue_assets' ) ) {
 				$theme->enqueue_assets();
 			}
+		}
+
+		if ( apply_filters( 'wpt.theme.load_fontawesome', true ) ) {
+			wp_enqueue_style( 'wpt-fontawesome', '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], 470 );
+		}
+	}
+
+	/**
+	 * Maybe load specific compatibility hooks for the current theme
+	 */
+	public function maybe_load_theme_compatibility_hooks() {
+		$current_theme = wp_get_theme()->template;
+		$potential_file = TIMELINER_DIR . "/classes/frontend/themes-compatibility-hooks/{$current_theme}.php";
+
+		if ( file_exists( $potential_file ) && apply_filters( 'wpt.theme.load_compatibility_hooks', true, $current_theme ) ) {
+			include_once $potential_file;
 		}
 	}
 }
