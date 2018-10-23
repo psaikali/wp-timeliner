@@ -22,12 +22,21 @@ class Timeline extends Abstract_Term {
 	}
 
 	/**
-	 * Get the Timeline theme.
+	 * Get theme slug
 	 *
-	 * @return string The theme used.
+	 * @return string
+	 */
+	public function get_theme_slug() {
+		return $this->get_meta( 'timeline_theme' );
+	}
+
+	/**
+	 * Get the Timeline theme object.
+	 *
+	 * @return object The theme object.
 	 */
 	public function get_theme() {
-		return Themes::get_instance()->get_theme( $this->get_meta( 'timeline_theme' ) );
+		return Themes::get_instance()->get_theme( $this->get_theme_slug() );
 	}
 
 	/**
