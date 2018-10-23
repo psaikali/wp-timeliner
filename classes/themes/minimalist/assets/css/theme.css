@@ -18,6 +18,7 @@ section.wpt-timeline.wpt-theme-minimalist {
   padding-left: 1.75rem; }
   section.wpt-timeline.wpt-theme-minimalist article.wpt-achievement {
     position: relative;
+    margin-top: 1rem;
     margin-bottom: 2.625rem;
     background: #eff0f4;
     padding: 0.875rem 0.875rem 0.875rem 1.3125rem;

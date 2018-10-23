@@ -32,6 +32,7 @@ section.wpt-timeline.wpt-theme-minimalist {
 	article.wpt-achievement {
 		$background: lighten( $border_color, 10% );
 		position: relative;
+		margin-top: $icon_width / 2;
 		margin-bottom: $margin_b;
 		background: $background;
 		padding: $inner_padding $inner_padding $inner_padding $inner_padding * 1.5;
