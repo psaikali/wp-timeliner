@@ -36,6 +36,7 @@ class Timeline implements Has_Hooks {
 		}
 
 		global $post;
+		$has_timeline = false;
 
 		$timeline_blocks = array_filter( gutenberg_parse_blocks( $post->post_content ), function( $block ) {
 			return ( $block['blockName'] === self::BLOCK_NAME );
@@ -46,7 +47,12 @@ class Timeline implements Has_Hooks {
 				continue;
 			}
 
+			$has_timeline = true;
 			wpt_timeline( (int) $timeline_block['attrs']['timelineId'] )->get_theme()->enqueue_assets();
+		}
+
+		if ( $has_timeline ) {
+			wp_enqueue_style( 'wpt-fontawesome', '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], 470 );
 		}
 	}
 
