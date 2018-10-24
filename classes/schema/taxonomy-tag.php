@@ -33,6 +33,7 @@ class Taxonomy_Tag extends Abstract_Taxonomy implements Has_Hooks {
 			[
 				'public'       => false,
 				'hierarchical' => false,
+				'show_in_rest' => true,
 			],
 			[
 				Post_Type_Achievement::POST_TYPE,
