@@ -65,7 +65,7 @@ class Timeline implements Has_Hooks {
 		}
 
 		register_block_type( 
-			self::BLOCK_NAME, 
+			self::BLOCK_NAME,
 			[ 
 				'editor_script'   => 'wpt-timeline-gutenblock',
 				'render_callback' => [ $this, 'render_timeline_gutenblock' ],

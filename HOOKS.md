@@ -7,6 +7,7 @@
 
 ## wpt.theme.load_fontawesome
 ## wpt.theme.load_theme_css
+## wpt.theme.load_compatibility_hooks
 
 ## wpt.timeline.date_format
 ## wpt.timeline.date_string_format_for_one_date

@@ -1,4 +1,2 @@
 <?php
-
-var_dump( $timeline );
-var_dump( $achievement );
+$timeline->get_theme()->display_achievement( $achievement, $timeline );
