@@ -60,6 +60,10 @@ class Timeline implements Has_Hooks {
 	 * Register our timeline gutenblock
 	 */
 	public function register_timeline_gutenblock() {
+		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
+
 		register_block_type( 
 			self::BLOCK_NAME, 
 			[ 
