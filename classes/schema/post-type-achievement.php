@@ -64,6 +64,7 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 
 		add_filter( 'gettext', [ $this, 'change_excerpt_title' ], 10, 3 );
 		add_action( 'admin_head', [ $this, 'custom_css_on_achievement_edit_page' ] );
+		add_action( 'admin_head', [ $this, 'fix_gutenberg410_metabox_visibility' ] );
 	}
 
 	/**
@@ -97,6 +98,15 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 	public function custom_css_on_achievement_edit_page() {
 		if ( $this->is_edit_admin_page() ) {
 			echo '<style>#postexcerpt textarea + p { display:none; }</style>';
+		}
+	}
+
+	/**
+	 * Fix Gutenberg 4.1.0 metabox-disappearing-bug
+	 */
+	public function fix_gutenberg410_metabox_visibility() {
+		if ( $this->is_edit_admin_page() ) {
+			echo '<style>#carbon_fields_container_achievements_details { display:block !important; }</style>';
 		}
 	}
 }
