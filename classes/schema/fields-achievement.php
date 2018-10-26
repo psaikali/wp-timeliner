@@ -59,9 +59,31 @@ class Fields_Achievement extends Abstract_Fields implements Has_Hooks {
 					->set_palette( apply_filters( 'wpt.achievements.color_palette', [ '#00171F', '#5BC0EB', '#FDE74C', '#9BC53D', '#FA7921', '#D90429' ] ) )
 					->set_width( 50 );
 
-		$fields[] = Field::make( 'checkbox', 'achievement_show_button', __( 'Link to achievement single page', 'wp-timeliner' ) )
+		$fields[] = Field::make( 'checkbox', 'achievement_show_button', __( 'Show a button', 'wp-timeliner' ) )
 					->set_option_value( 'on' )
-					->set_help_text( __( 'Display a <em>Read more</em> button in the timeline in order to read this achievement full description.', 'wp-timeliner' ) );
+					->set_help_text( __( 'Enable this option in order to display a button in this achievement timeline.', 'wp-timeliner' ) );
+
+		$fields[] = Field::make( 'text', 'achievement_button_link', __( 'Button link', 'wp-timeliner' ) )
+					->set_help_text( __( 'Leave blank to link directly to this achievement single page URL.', 'wp-timeliner' ) )
+					->set_width( 50 )
+					->set_conditional_logic( [
+						[
+							'field'   => 'achievement_show_button',
+							// 'value'   => 'on',
+							'compare' => '!=',
+						]
+					] );
+
+		$fields[] = Field::make( 'text', 'achievement_button_label', __( 'Button label', 'wp-timeliner' ) )
+					->set_help_text( __( 'Leave blank to link to use the default button label set in the timeline setting.', 'wp-timeliner' ) )
+					->set_width( 50 )
+					->set_conditional_logic( [
+						[
+							'field'   => 'achievement_show_button',
+							// 'value'   => 'on',
+							'compare' => '!=',
+						]
+					] );
 
 		return $fields;
 	}

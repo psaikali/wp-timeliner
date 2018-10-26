@@ -82,4 +82,22 @@ class Helpers {
 
 		return array_key_exists( $name, $classes ) ? $classes[ $name ] : false;
 	}
+
+	/**
+	 * Is this an internal URL or external one?
+	 *
+	 * @author https://browse-tutorials.com/snippet/check-if-url-external-or-internal-php
+	 * @param string $url The URL to analyze.
+	 * @return boolean Whether the $url is from our current site, or not.
+	 */
+	public static function is_internal_url( $url ) {
+		if ( strpos( $url, 'http' ) !== 0 ) {
+			$url = "http://$url";
+		}
+
+		$url_host      = wp_parse_url( $url, PHP_URL_HOST );
+		$base_url_host = wp_parse_url( home_url(), PHP_URL_HOST );
+
+		return ( $url_host == $base_url_host || empty( $url_host ) );
+	}
 }

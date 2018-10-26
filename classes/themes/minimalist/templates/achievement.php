@@ -2,7 +2,7 @@
 	<header class="wpt-title">
 		<h2>
 			<?php if ( $achievement->has_button() ) { ?>
-			<a href="<?php echo esc_url( $achievement->get_permalink() ); ?>">
+			<a href="<?php echo esc_url( $achievement->get_button_link() ); ?>">
 			<?php } ?>
 				<?php echo wp_kses_post( $achievement->get_title() ); ?>
 			<?php if ( $achievement->has_button() ) { ?>
@@ -23,8 +23,8 @@
 
 	<?php if ( $achievement->has_button() ) { ?>
 	<footer class="wpt-read-more-button">
-		<a href="<?php echo esc_url( $achievement->get_permalink() ); ?>">
-			<?php echo wp_kses_post( $timeline->get_button_label() ); ?>
+		<a href="<?php echo esc_url( $achievement->get_button_link() ); ?>" <?php if ( ! WP_Timeliner\Helpers::is_internal_url( $achievement->get_button_link() ) ) { ?>target="_blank" rel="noopener"<?php } ?>>
+			<?php echo wp_kses_post( $achievement->get_button_label() ); ?>
 		</a>
 	</footer>
 	<?php } ?>

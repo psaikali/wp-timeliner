@@ -70,7 +70,7 @@ class Fields_Timeline extends Abstract_Fields implements Has_Hooks {
 					->set_help_text( __( 'Display the year every time two consecutive achievements go from one year to another.', 'wp-timeliner' ) );
 
 		$fields[] = Field::make( 'text', 'timeline_button_text', __( 'Achievement buttons label', 'wp-timeliner' ) )
-					->set_help_text( __( 'Override the default <em>Read more</em> achievement button label.', 'wp-timeliner' ) )
+					->set_help_text( __( 'Set the default achievement button label. Can be changed on a single achievement level.', 'wp-timeliner' ) )
 					->set_default_value( __( 'Read more', '' ) )
 					->set_required();
 

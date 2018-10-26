@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use WP_Timeliner\Schema\Post_Type_Achievement;
 use WP_Timeliner\Schema\Taxonomy_Tag;
+use WP_Timeliner\Schema\Taxonomy_Timeline;
 
 /**
  * A model to get easy access to Achievement posts data.
@@ -105,6 +106,36 @@ class Achievement extends Abstract_Post {
 	 */
 	public function has_button() {
 		return ( $this->get_meta( 'achievement_show_button' ) == 1 );
+	}
+
+	/**
+	 * Get the achievement button link (or achievement permalink if empty)
+	 *
+	 * @return string Button link
+	 */
+	public function get_button_link() {
+		$achievement_button_link = $this->get_meta( 'achievement_button_link' );
+		return ( strlen( $achievement_button_link ) > 0 ) ? $achievement_button_link : $this->get_permalink();
+	}
+
+	/**
+	 * Get the achievement button label (or timeline button default label).
+	 *
+	 * @return string Button label
+	 */
+	public function get_button_label() {
+		$achievement_button_label = $this->get_meta( 'achievement_button_label' );
+		return ( strlen( $achievement_button_label ) > 0 ) ? $achievement_button_label : $this->get_timeline()->get_button_label();
+	}
+
+	/**
+	 * Get Timeline
+	 *
+	 * @return WP_Timeliner\Models\Timeline|null The first timeline set for this achievement, or null.
+	 */
+	public function get_timeline() {
+		$timelines = $this->get_terms( Taxonomy_Timeline::TAXONOMY );
+		return ( ! empty( $timelines ) ) ? $timelines[0] : null;
 	}
 
 	/**
