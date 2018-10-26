@@ -1,3 +1,5 @@
+[Please head to our wiki](https://github.com/psaikali/wp-timeliner/wiki) for a full description of these hooks. 
+
 # Filters
 
 ## wpt.achievements.color_palette
@@ -19,3 +21,13 @@
 
 ## wpt.template.before-inclusion
 ## wpt.template.after-inclusion
+
+## wpt.template.before-header
+## wpt.template.after-header
+## wpt.template.before-loop
+## wpt.timeline.after-loop
+## wpt.template.start-loop-item
+## wpt.template.end-loop-item
+## wpt.template.before-no-achievement-found
+## wpt.template.after-no-achievement-found
+## wpt.timeline.after-footer
