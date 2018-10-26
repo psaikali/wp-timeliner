@@ -35,7 +35,6 @@ class Timeliner {
 		add_action( 'after_setup_theme', [ $this, 'boot_carbon_fields' ] );
 	}
 
-
 	/**
 	 * Executed when plugin is activated.
 	 */

@@ -1,0 +1,491 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Timeliner\n"
+"POT-Creation-Date: 2018-10-26 14:06+0200\n"
+"PO-Revision-Date: 2018-10-26 14:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: Pierre Saïkali <pierre@mosaika.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html__;_n;_x;_ex\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: tests\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: libraries\n"
+"X-Poedit-SearchPathExcluded-3: assets\n"
+
+#: classes/admin/options/options.php:59
+msgid "WP Timeliner options"
+msgstr "Options de WP Timeliner"
+
+#: classes/admin/options/options.php:65
+msgid "WP Timeliner"
+msgstr "WP Timeliner"
+
+#: classes/admin/options/options.php:84
+msgid "General"
+msgstr "Général"
+
+#: classes/admin/options/options.php:100
+msgid "Warning!"
+msgstr "Attention !"
+
+#: classes/admin/options/options.php:101
+msgid ""
+"The settings below are for experienced WordPress users only. Please double "
+"check before altering one of this option and do not forget to flush rewrite "
+"rules and setup proper redirections afterwards."
+msgstr ""
+"Les réglages ci-dessous sont destinés à des utilisateurs WordPress "
+"expérimentés. Veillez à vérifier avant de changer un réglage, n’oubliez pas "
+"de rafraîchir vos permaliens et de mettre en place d’éventuelles "
+"redirections ensuite."
+
+#: classes/admin/options/options.php:107
+msgid "Enable timeline archive pages"
+msgstr ""
+
+#: classes/admin/options/options.php:109
+msgid ""
+"By default, timelines are manually displayed via a shortcode or Gutenberg "
+"block. By enabling this setting, each timeline will automatically get its "
+"own URL."
+msgstr ""
+
+#: classes/admin/options/options.php:111
+msgid "Achievement URL prefix"
+msgstr ""
+
+#: classes/admin/options/options.php:112
+msgid ""
+"Override the URL slug for single achievement pages. Leave blank for default "
+"<em>achievement</em> value."
+msgstr ""
+
+#: classes/admin/options/options.php:115
+msgid "Timeline URL prefix"
+msgstr ""
+
+#: classes/admin/options/options.php:116
+msgid ""
+"Override the URL slug for timeline archive pages. Leave blank for default "
+"<em>timeline</em> value."
+msgstr ""
+
+#: classes/admin/options/options.php:156
+msgid "Settings"
+msgstr ""
+
+#: classes/schema/abstract-fields.php:48
+#, php-format
+msgid "Fields for %1$s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:66
+#: classes/schema/abstract-post-type.php:70
+#: classes/schema/abstract-post-type.php:74
+msgid ""
+"It is required to pass a single, plural and slug string to Abstract_Post_Type"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:135
+#: classes/schema/abstract-post-type.php:136
+#: classes/schema/abstract-taxonomy.php:128
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:137
+#: classes/schema/abstract-taxonomy.php:125
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:138
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:139
+#: classes/schema/abstract-taxonomy.php:124
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:140
+#: classes/schema/abstract-taxonomy.php:126
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:141
+#: classes/schema/abstract-taxonomy.php:123
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:142
+#: classes/schema/abstract-taxonomy.php:131
+#, php-format
+msgid "No %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:143
+#, php-format
+msgid "No %s found in Trash"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:144
+#: classes/schema/abstract-taxonomy.php:135
+#, php-format
+msgid "Parent %s:"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:146
+#, php-format
+msgid "Insert into %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:147
+#, php-format
+msgid "Uploaded to this %s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:148
+#, php-format
+msgid "%s list"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:149
+#, php-format
+msgid "%s list navigation"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:150
+#, php-format
+msgid "Filter %s list"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:200
+msgid "Custom field updated."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:201
+msgid "Custom field deleted."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:202
+#: classes/schema/abstract-post-type.php:214
+#, php-format
+msgid "%1$s updated."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:203
+#, php-format
+msgid "%1$s restored to revision from %2$s"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:204
+#, php-format
+msgid "%1$s saved."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:208
+#, php-format
+msgid "%1$s updated. <a href=\"%2$s\">View %1$s</a>"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:209
+#, php-format
+msgid "%1$s published. <a href=\"%2$s\">View %1$s</a>"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:210
+#, php-format
+msgid "%1$s submitted. <a target=\"_blank\" href=\"%2$s\">Preview %1$s</a>"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:211
+#, php-format
+msgid ""
+"%1$s scheduled for: <strong>%2$s</strong>. <a target=\"_blank\" href=\"%3$s"
+"\">Preview %1$s</a>"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:211
+#: classes/schema/abstract-post-type.php:217
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:212
+#, php-format
+msgid "%1$s draft updated. <a target=\"_blank\" href=\"%2$s\">Preview %1$s</a>"
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:215
+#, php-format
+msgid "%1$s published."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:216
+#, php-format
+msgid "%1$s submitted."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:217
+#, php-format
+msgid "%1$s scheduled for: <strong>%2$s</strong>."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:218
+#, php-format
+msgid "%1$s draft updated."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:236
+#, php-format
+msgid "%1$s %2$s updated."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:237
+#, php-format
+msgid "%1$s %2$s not updated, somebody is editing it."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:238
+#, php-format
+msgid "%1$s %2$s permanently deleted."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:239
+#, php-format
+msgid "%1$s %2$s moved to the Trash."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:240
+#, php-format
+msgid "%1$s %2$s restored from the Trash."
+msgstr ""
+
+#: classes/schema/abstract-post-type.php:281
+#, php-format
+msgid "%s Title"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:75
+#: classes/schema/abstract-taxonomy.php:79
+#: classes/schema/abstract-taxonomy.php:83
+msgid ""
+"It is required to pass a single, plural and slug string to Taxonomy_Core"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:127
+#, php-format
+msgid "Update %s"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:129
+#, php-format
+msgid "New %s Name"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:130
+#, php-format
+msgid "No %s found."
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:134
+#, php-format
+msgid "Parent %s"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:138
+#, php-format
+msgid "Popular %s"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:139
+#, php-format
+msgid "Separate %s with commas"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:140
+#, php-format
+msgid "Add or remove %s"
+msgstr ""
+
+#: classes/schema/abstract-taxonomy.php:141
+#, php-format
+msgid "Choose from the most used %s"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:26
+msgid "Achievement details"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:40
+msgid "Start date"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:42
+msgid "Start date for this achievement"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:44
+msgid "This date will be used to position this achievement in its timeline."
+msgstr ""
+
+#: classes/schema/fields-achievement.php:48
+msgid "End date"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:50
+msgid "End date for this achievement"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:54
+msgid "Icon"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:58
+msgid "Main color"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:62
+msgid "Show a button"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:64
+msgid ""
+"Enable this option in order to display a button in this achievement timeline."
+msgstr ""
+
+#: classes/schema/fields-achievement.php:66
+msgid "Button link"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:67
+msgid "Leave blank to link directly to this achievement single page URL."
+msgstr ""
+
+#: classes/schema/fields-achievement.php:77
+msgid "Button label"
+msgstr ""
+
+#: classes/schema/fields-achievement.php:78
+msgid ""
+"Leave blank to link to use the default button label set in the timeline "
+"setting."
+msgstr ""
+
+#: classes/schema/fields-timeline.php:28
+msgid "Timeline settings"
+msgstr ""
+
+#: classes/schema/fields-timeline.php:50
+msgid "Theme"
+msgstr ""
+
+#: classes/schema/fields-timeline.php:59
+msgid "Date format"
+msgstr ""
+
+#: classes/schema/fields-timeline.php:62
+#, php-format
+msgid "Year only (%1$s)"
+msgstr ""
+
+#: classes/schema/fields-timeline.php:63
+#, php-format
+msgid "Month and year (%1$s)"
+msgstr ""
+
+#: classes/schema/fields-timeline.php:64
+#, php-format
+msgid "Full date (%1$s)"
+msgstr ""
+
+#: classes/schema/fields-timeline.php:68
+msgid "Display a separation per year."
+msgstr ""
+
+#: classes/schema/fields-timeline.php:70
+msgid ""
+"Display the year every time two consecutive achievements go from one year to "
+"another."
+msgstr ""
+
+#: classes/schema/fields-timeline.php:72
+msgid "Achievement buttons label"
+msgstr ""
+
+#: classes/schema/fields-timeline.php:73
+msgid ""
+"Set the default achievement button label. Can be changed on a single "
+"achievement level."
+msgstr ""
+
+#: classes/schema/fields-timeline.php:74
+msgid "Read more"
+msgstr ""
+
+#: classes/schema/post-type-achievement.php:29
+msgid "Achievement"
+msgstr ""
+
+#: classes/schema/post-type-achievement.php:30
+msgid "Achievements"
+msgstr ""
+
+#: classes/schema/post-type-achievement.php:51
+#: classes/schema/taxonomy-timeline.php:30
+msgid "Timelines"
+msgstr ""
+
+#: classes/schema/post-type-achievement.php:52
+#: classes/schema/post-type-achievement.php:53
+msgid "New Achievement"
+msgstr ""
+
+#: classes/schema/post-type-achievement.php:88
+msgid "Achievement summary"
+msgstr ""
+
+#: classes/schema/taxonomy-tag.php:29
+msgid "Tag"
+msgstr ""
+
+#: classes/schema/taxonomy-tag.php:30
+msgid "Tags"
+msgstr ""
+
+#: classes/schema/taxonomy-timeline.php:29
+msgid "Timeline"
+msgstr ""
+
+#: classes/schema/templates/tag-introduction.php:6
+msgid ""
+"Tags are useful to group and filter achievements. Some tag examples for "
+"grouping achievements could be: a skill (in a resume), a country (for a "
+"roadtrip) or a phase (on a crowdfunding page)."
+msgstr ""
+
+#: classes/schema/templates/timeline-introduction.php:6
+msgid ""
+"A timeline is a \"container\" that will be used to display multiple events "
+"(called \"Achievements\") in a chronological order."
+msgstr ""
+
+#: classes/themes/abstract-theme.php:87
+#, php-format
+msgid "From %1$s to %2$s"
+msgstr ""
+
+#: templates/no-achievement-found.php:3
+msgid "We don't have anything to show on this timeline."
+msgstr ""

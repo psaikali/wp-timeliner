@@ -50,6 +50,11 @@ Autoloader::register();
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
 /**
+ * Load translation
+ */
+load_plugin_textdomain( 'wp-timeliner', false, TIMELINER_PLUGIN_DIRNAME . '/languages/' );
+
+/**
  * Activation and de-activation hooks
  */
 register_activation_hook( __FILE__, array( wp_timeliner(), 'activate' ) );
