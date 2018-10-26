@@ -56,7 +56,7 @@ class Fields_Achievement extends Abstract_Fields implements Has_Hooks {
 					->set_width( 50 );
 
 		$fields[] = Field::make( 'color', 'achievement_color', __( 'Main color', 'wp-timeliner' ) )
-					->set_palette( apply_filters( 'wpt.achievements.color_palette', [ '#00171F', '#5BC0EB', '#FDE74C', '#9BC53D', '#FA7921', '#D90429' ] ) )
+					->set_palette( apply_filters( 'wpt.achievements.color_palette', [ '#00171F', '#5BC0EB', '#FDE74C', '#9BC53D', '#FA7921', '#D90429', '#7D5CD1', '#FF80D9' ] ) )
 					->set_width( 50 );
 
 		$fields[] = Field::make( 'checkbox', 'achievement_show_button', __( 'Show a button', 'wp-timeliner' ) )
