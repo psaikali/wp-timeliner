@@ -20,7 +20,7 @@ class Timeline implements Has_Hooks {
 
 	public function hooks() {
 		add_action( 'init', [ $this, 'register_timeline_gutenblock' ] );
-		//add_action( 'enqueue_block_editor_assets', [ $this, 'register_timeline_gutenblock_assets' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'register_timeline_gutenblock_assets' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_timelines_themes_assets' ] );
 	}
 
@@ -91,7 +91,13 @@ class Timeline implements Has_Hooks {
 	 * @todo
 	 */
 	public function register_timeline_gutenblock_assets() {
-		// Todo.
+		if ( ! function_exists( 'gutenberg_get_jed_locale_data' ) ) {
+			return;
+		}
+
+		$locale  = gutenberg_get_jed_locale_data( 'wp-timeliner' );
+		$content = 'wp.i18n.setLocaleData(' . json_encode( $locale ) . ', "wp-timeliner" );';
+		wp_script_add_data( 'wpt-timeline-gutenblock', 'data', $content );
 	}
 
 	/**
@@ -120,5 +126,24 @@ class Timeline implements Has_Hooks {
 		ob_start();
 		$theme->display_timeline( $timeline, $achievements );
 		return ob_get_clean();
+	}
+
+	/**
+	 * Make JS strings translatable
+	 */
+	private function reveal_js_strings_to_poedit() {
+		$js_strings = [
+			__( 'Timeline', 'wp-timeliner' ),
+			__( 'wp timeliner', 'wp-timeliner' ),
+			__( 'timeline', 'wp-timeliner' ),
+			__( 'event', 'wp-timeliner' ),
+			__( 'No timeline to select... yet!', 'wp-timeliner' ),
+			__( 'Loading timelines...', 'wp-timeliner' ),
+			__( 'achievements', 'wp-timeliner' ),
+			__( 'achievement', 'wp-timeliner' ),
+			__( 'Select timeline to display', 'wp-timeliner' ),
+			__( 'Display timeline called "%1$s"', 'wp-timeliner'),
+			__( 'Choose a valid timeline to display...', 'wp-timeliner' ),
+		];
 	}
 }
