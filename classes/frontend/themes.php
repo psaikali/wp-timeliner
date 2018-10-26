@@ -31,7 +31,7 @@ class Themes {
 		if ( is_null( self::$themes ) ) {
 			self::$themes = [
 				'minimalist' => new \WP_Timeliner\Themes\Minimalist\Minimalist_Theme(),
-				'snake'      => new \WP_Timeliner\Themes\Snake\Snake_Theme(),
+				//'snake'      => new \WP_Timeliner\Themes\Snake\Snake_Theme(),
 			];
 		}
 
