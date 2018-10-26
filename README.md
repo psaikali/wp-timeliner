@@ -29,6 +29,8 @@ Not available yet. Check back soon!
 
 ## Documentation
 [Please head to our wiki](https://github.com/psaikali/wp-timeliner/wiki) in order to learn how to use and extend WP Timeliner plugin.
+- [List of hooks available](https://github.com/psaikali/wp-timeliner/wiki/Hooks)
+- [How to create a timeline theme](https://github.com/psaikali/wp-timeliner/wiki/Themes)
 
 ## Built with
 
