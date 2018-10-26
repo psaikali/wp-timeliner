@@ -77,10 +77,19 @@ abstract class Abstract_Term {
 	/**
 	 * Get WP_Term->ID.
 	 *
-	 * @return int The Post ID.
+	 * @return int The Term ID.
 	 */
 	public function get_id() {
 		return $this->object_id;
+	}
+
+	/**
+	 * Get term taxonomy.
+	 *
+	 * @return string The term taxonomy.
+	 */
+	public function get_taxonomy() {
+		return $this->taxonomy;
 	}
 
 	/**
@@ -141,5 +150,23 @@ abstract class Abstract_Term {
 	 */
 	public function get_content( $filtered = false ) {
 		return $this->get_description( $filtered );
+	}
+
+	/**
+	 * Get term archive permalink.
+	 *
+	 * @return string The term archive permalink.
+	 */
+	public function get_archive_permalink() {
+		return get_term_link( $this->get_term(), $this->get_taxonomy() );
+	}
+
+	/**
+	 * Proxy to get permalink (url).
+	 *
+	 * @return string The post permalink.
+	 */
+	public function get_url() {
+		return $this->get_archive_permalink();
 	}
 }
