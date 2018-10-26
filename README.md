@@ -1,6 +1,6 @@
 # WP Timeliner [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-<p align="center">![Icon](http://media.mosaika.fr/eebe3ea2b856/repo-icon.png)</p>
+<p align="center"><img width="200" height="200" src="https://d2ddoduugvun08.cloudfront.net/items/3o0v061L3D003W061p2z/repo-icon.png"></p>
 
 **Easily create timelines in WordPress and display achievements in a chronological way.**
 
