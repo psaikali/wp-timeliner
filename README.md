@@ -6,7 +6,15 @@
 
 Display your timelines via a Gutenberg block, via a shortcode or using the Timeline taxonomy archive page.
 
-This plugin provides lots of hooks and an extensible theming system to let developers extend it and customize it.
+This plugin provides [lots of hooks](https://github.com/psaikali/wp-timeliner/wiki/Hooks) and an extensible theming system to let developers extend it and customize it.
+
+## Philosophy
+The plugin creates a new "Achievement" post type, alongside with a new "Timeline" taxonomy. 
+Achievements are assigned to a timeline term, allowing them to be grouped  together on a specific timeline.
+
+Displaying a timeline can whether be done:
+- _manually_ via a Gutenberg block anywhere on your site, 
+- _automatically_ via each Timeline term archive page where achievements will be displayed chronologically (disabled by default but can be enabled via plugins settings page)
 
 ## Getting Started
 

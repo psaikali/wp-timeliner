@@ -5,7 +5,7 @@
 ## wpt.achievements.color_palette
 ## wpt.timeline.themes
 
-## wpt.template.located
+## wpt.template.locate
 
 ## wpt.theme.load_fontawesome
 ## wpt.theme.load_theme_css
