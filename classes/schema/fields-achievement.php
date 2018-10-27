@@ -14,6 +14,25 @@ use Carbon_Fields\Field;
  */
 class Fields_Achievement extends Abstract_Fields implements Has_Hooks {
 	/**
+	 * Context to display these fields
+	 *
+	 * @var string
+	 */
+	public $context = 'achievement';
+
+	/**
+	 * Get metaboxes location, where they will appear.
+	 *
+	 * @return array Valid CarbonFields metabox conditional display array.
+	 */
+	protected function get_metaboxes_location() {
+		return [
+			'type'      => 'post_meta',
+			'condition' => [ 'post_type', '=', Post_Type_Achievement::POST_TYPE ],
+		];
+	}
+
+	/**
 	 * Register the Achievement metaboxes.
 	 *
 	 * @return array An array of Carbon_Fields\Container settings.
@@ -21,10 +40,8 @@ class Fields_Achievement extends Abstract_Fields implements Has_Hooks {
 	protected function get_metaboxes() {
 		return [
 			[
-				'type'      => 'post_meta',
-				'id'        => 'achievements_details',
-				'title'     => __( 'Achievement details', 'wp-timeliner' ),
-				'condition' => [ 'post_type', '=', Post_Type_Achievement::POST_TYPE ],
+				'id'    => 'achievements_details',
+				'title' => __( 'Achievement details', 'wp-timeliner' ),
 			],
 		];
 	}

@@ -106,7 +106,7 @@ class Post_Type_Achievement extends Abstract_Post_Type implements Has_Hooks {
 	 */
 	public function fix_gutenberg410_metabox_visibility() {
 		if ( $this->is_edit_admin_page() ) {
-			echo '<style>#carbon_fields_container_achievements_details { display:block !important; }</style>';
+			echo '<style>[id^=carbon_fields_container_] { display:block !important; }</style>';
 		}
 	}
 }

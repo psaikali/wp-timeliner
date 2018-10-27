@@ -15,6 +15,12 @@
 ## wpt.timeline.date_string_format_for_one_date
 ## wpt.timeline.date_string_format_for_two_dates
 
+## wpt.metaboxes.achievement
+## wpt.metaboxes.timeline
+
+## wpt.fields.achievement
+## wpt.fields.timeline
+
 ---
 
 # Actions

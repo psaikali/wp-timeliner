@@ -14,6 +14,13 @@ use WP_Timeliner\Helpers;
  */
  abstract class Abstract_Fields {
 	/**
+	 * Context to display these fields
+	 *
+	 * @var string
+	 */
+	public $context = 'post';
+
+	/**
 	 * Register Carbon Fields fields.
 	 */
 	public function hooks() {
@@ -24,7 +31,12 @@ use WP_Timeliner\Helpers;
 	 * Add fields to each registered metaboxes.
 	 */
 	public function add_metaboxes_and_fields() {
-		foreach ( $this->get_metaboxes() as $metabox_data ) {
+		$metaboxes         = apply_filters( "wpt.metaboxes.{$this->context}", $this->get_metaboxes() );
+		$located_metaboxes = array_map( function( $metabox ) {
+			return array_merge( $metabox, $this->get_metaboxes_location() );
+		}, $metaboxes );
+
+		foreach ( $located_metaboxes as $metabox_data ) {
 			$metabox_data = wp_parse_args( $metabox_data, $this->get_default_metabox_data() );
 			$metabox      = Container::make(
 				$metabox_data['type'],
@@ -56,11 +68,16 @@ use WP_Timeliner\Helpers;
 	 * @param Carbon_Fields\Container $metabox CarbonFields container.
 	 */
 	protected function add_fields_to_metabox( $metabox ) {
-		$metabox_fields_method_name = 'fields_for_' . $this->get_metabox_short_id( $metabox );
+		$metabox_id                 = $this->get_metabox_short_id( $metabox );
+		$metabox_fields_method_name = 'fields_for_' . $metabox_id;
 
 		if ( method_exists( $metabox, 'add_fields' ) && method_exists( $this, $metabox_fields_method_name ) ) {
-			$metabox->add_fields( $this->{$metabox_fields_method_name}() );
+			$fields = $this->{$metabox_fields_method_name}();
+		} else {
+			$fields = apply_filters( "wpt.fields.{$this->context}", [] );
 		}
+
+		$metabox->add_fields( $fields );
 	}
 
 	/**
@@ -73,6 +90,8 @@ use WP_Timeliner\Helpers;
 		if ( method_exists( $metabox, 'get_id' ) ) {
 			return str_replace( 'carbon_fields_container_', '', $metabox->get_id() );
 		}
+
+		return null;
 	}
 
 	/**

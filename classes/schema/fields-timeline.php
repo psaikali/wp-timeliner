@@ -16,6 +16,25 @@ use WP_Timeliner\Frontend\Themes;
  */
 class Fields_Timeline extends Abstract_Fields implements Has_Hooks {
 	/**
+	 * Context to display these fields
+	 *
+	 * @var string
+	 */
+	public $context = 'timeline';
+
+	/**
+	 * Get metaboxes location, where they will appear.
+	 *
+	 * @return array Valid CarbonFields metabox conditional display array.
+	 */
+	protected function get_metaboxes_location() {
+		return [
+			'type'      => 'term_meta',
+			'condition' => [ 'term_taxonomy', '=', Taxonomy_Timeline::TAXONOMY ],
+		];
+	}
+
+	/**
 	 * Register the Timeline metaboxes.
 	 *
 	 * @return array An array of Carbon_Fields\Container settings.
@@ -23,10 +42,8 @@ class Fields_Timeline extends Abstract_Fields implements Has_Hooks {
 	protected function get_metaboxes() {
 		return [
 			[
-				'type'      => 'term_meta',
 				'id'        => 'timeline_settings',
 				'title'     => __( 'Timeline settings', 'wp-timeliner' ),
-				'condition' => [ 'term_taxonomy', '=', Taxonomy_Timeline::TAXONOMY ],
 			],
 		];
 	}
