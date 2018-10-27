@@ -148,6 +148,12 @@ class Options implements Has_Hooks {
 		return "wpt_{$id}";
 	}
 
+	/**
+	 * Output the Settings link on the Plugins admin page
+	 *
+	 * @param array $links A list of existing links.
+	 * @return array A new list of links.
+	 */
 	public function plugin_settings_link( $links ) {
 		$settings_url = admin_url( 'options-general.php?page=' . self::OPTIONS_SLUG );
 		$settings_link_tag = sprintf(
