@@ -74,7 +74,7 @@ use WP_Timeliner\Helpers;
 		if ( method_exists( $metabox, 'add_fields' ) && method_exists( $this, $metabox_fields_method_name ) ) {
 			$fields = $this->{$metabox_fields_method_name}();
 		} else {
-			$fields = apply_filters( "wpt.fields.{$this->context}", [] );
+			$fields = apply_filters( "wpt.fields.{$this->context}.{$metabox_id}", [] );
 		}
 
 		$metabox->add_fields( $fields );
