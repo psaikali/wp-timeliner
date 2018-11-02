@@ -2,7 +2,7 @@
 	<header class="wpt-title">
 		<h2>
 			<?php if ( $achievement->has_button() ) { ?>
-			<a href="<?php echo esc_url( $achievement->get_button_link() ); ?>">
+			<a href="<?php echo esc_url( $achievement->get_button_link() ); ?>" <?php if ( ! WP_Timeliner\Helpers::is_internal_url( $achievement->get_button_link() ) ) { ?>target="_blank" rel="noopener"<?php } ?>>
 			<?php } ?>
 				<?php echo wp_kses_post( $achievement->get_title() ); ?>
 			<?php if ( $achievement->has_button() ) { ?>
