@@ -50,7 +50,7 @@ class Minimalist_Theme extends Abstract_Theme {
 	 */
 	public function list_tags( $achievement ) {
 		return implode( 
-			',',
+			', ',
 			array_map( function( $tag ) { return $tag->get_name(); }, $achievement->get_tags() )
 		);
 	}
