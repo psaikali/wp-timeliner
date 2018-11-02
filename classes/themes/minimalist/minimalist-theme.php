@@ -44,4 +44,14 @@ class Minimalist_Theme extends Abstract_Theme {
 			wp_enqueue_style( 'wpt-theme-minimalist-css', $this->get_assets_path() . '/css/theme.css', [], self::THEME_VERSION );
 		}
 	}
+
+	/**
+	 * Helper to list tags
+	 */
+	public function list_tags( $achievement ) {
+		return implode( 
+			',',
+			array_map( function( $tag ) { return $tag->get_name(); }, $achievement->get_tags() )
+		);
+	}
 }

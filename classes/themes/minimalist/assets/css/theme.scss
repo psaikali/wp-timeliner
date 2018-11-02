@@ -7,7 +7,7 @@ $padding_l: 1.75rem;
 $margin_b: $padding_l * 1.5;
 $inner_padding: $padding_l / 2;
 $title_font_size: 1.5rem;
-$date_font_size: .9rem;
+$meta_font_size: .8rem;
 $icon_width: 2rem;
 $border_radius: $border_width;
 
@@ -75,11 +75,24 @@ section.wpt-timeline.wpt-theme-minimalist {
 			}
 		}
 
-		p.wpt-date {
+		p.wpt-meta {
 			margin: .5em 0 0;
-			font-size: $date_font_size;
+			font-size: $meta_font_size;
 			opacity: .5;
 			font-style: italic;
+
+			span.wpt-date {
+
+			}
+
+			span.wpt-tags {
+				display: inline-block;
+				margin-left: 1em;
+			}
+
+			i.fa {
+				opacity:.75;
+			}
 		}
 
 		div.wpt-summary {

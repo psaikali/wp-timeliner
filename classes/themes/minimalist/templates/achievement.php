@@ -10,8 +10,15 @@
 			<?php } ?>
 		</h2>
 
-		<p class="wpt-date">
-			<?php echo wp_kses_post( $this->display_date( $achievement, $timeline ) ); ?>
+		<p class="wpt-meta">
+			<span class="wpt-date">
+				<i class="fa fa-calendar"></i> <?php echo wp_kses_post( $this->display_date( $achievement, $timeline ) ); ?>
+			</span>
+			<?php if ( ! empty( $achievement->get_tags() ) ) { ?>
+			<span class="wpt-tags">
+			<i class="fa fa-tags"></i> <?php echo wp_kses_post( $this->list_tags( $achievement ) ); ?>
+			</span>
+			<?php } ?>
 		</p>
 	</header>
 
