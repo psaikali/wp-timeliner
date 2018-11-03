@@ -50,9 +50,10 @@ section.wpt-timeline.wpt-theme-minimalist {
       font-size: 0.8rem;
       opacity: .5;
       font-style: italic; }
+      section.wpt-timeline.wpt-theme-minimalist article.wpt-achievement p.wpt-meta span.wpt-date {
+        margin-right: 1em; }
       section.wpt-timeline.wpt-theme-minimalist article.wpt-achievement p.wpt-meta span.wpt-tags {
-        display: inline-block;
-        margin-left: 1em; }
+        display: inline; }
       section.wpt-timeline.wpt-theme-minimalist article.wpt-achievement p.wpt-meta i.fa {
         opacity: .75; }
     section.wpt-timeline.wpt-theme-minimalist article.wpt-achievement footer.wpt-read-more-button {

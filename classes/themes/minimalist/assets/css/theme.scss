@@ -82,12 +82,11 @@ section.wpt-timeline.wpt-theme-minimalist {
 			font-style: italic;
 
 			span.wpt-date {
-
+				margin-right: 1em;
 			}
 
 			span.wpt-tags {
-				display: inline-block;
-				margin-left: 1em;
+				display: inline;
 			}
 
 			i.fa {
