@@ -43,7 +43,7 @@ class Timeline implements Has_Hooks {
 		} );
 
 		foreach ( $timeline_blocks as $timeline_block ) {
-			if ( ! isset( $timeline_block['attrs']['timelineId'] ) ) {
+			if ( is_array( $timeline_block ) && ! isset( $timeline_block['attrs']['timelineId'] ) ) {
 				continue;
 			}
 
