@@ -16,7 +16,7 @@ class Snake_Theme extends Abstract_Theme {
 	/**
 	 * Theme version, for assets cache busting.
 	 */
-	private const THEME_VERSION = '1.0.0';
+	const THEME_VERSION = '1.0.0';
 
 	/**
 	 * Get assets path
