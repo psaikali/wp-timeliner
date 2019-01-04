@@ -32,11 +32,11 @@ define( 'TIMELINER_THEMES_URL', TIMELINER_URL . 'classes/themes' );
 /**
  * Load Composer dependencies.
  */
-$composer_autoloader = __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+// $composer_autoloader = __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
-if ( file_exists( $composer_autoloader ) ) {
-	require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-}
+// if ( file_exists( $composer_autoloader ) ) {
+// 	require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+// }
 
 /**
  * Register our autoloader logic.
