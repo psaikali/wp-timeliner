@@ -31,16 +31,22 @@ class Timeline implements Has_Hooks {
 	 * @todo Optimize this when Gutenberg will let us properly load block assets.
 	 */
 	public function load_timelines_themes_assets() {
-		if ( ! is_singular() || ! function_exists( 'gutenberg_parse_blocks' ) ) {
+		if ( ! is_singular() || ( ! function_exists( 'gutenberg_parse_blocks' ) && ! function_exists( 'parse_blocks' ) ) ) {
 			return;
 		}
 
 		global $post;
 		$has_timeline = false;
 
-		$timeline_blocks = array_filter( gutenberg_parse_blocks( $post->post_content ), function( $block ) {
-			return ( $block['blockName'] === self::BLOCK_NAME );
-		} );
+		if ( function_exists( 'gutenberg_parse_blocks' ) ) {
+			$timeline_blocks = array_filter( gutenberg_parse_blocks( $post->post_content ), function( $block ) {
+				return ( $block['blockName'] === self::BLOCK_NAME );
+			} );
+		} else if ( function_exists( 'parse_blocks' ) ) {
+			$timeline_blocks = array_filter( parse_blocks( $post->post_content ), function( $block ) {
+				return ( $block['blockName'] === self::BLOCK_NAME );
+			} );
+		}
 
 		foreach ( $timeline_blocks as $timeline_block ) {
 			if ( is_array( $timeline_block ) && ! isset( $timeline_block['attrs']['timelineId'] ) ) {
