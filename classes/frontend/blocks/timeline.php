@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Our Timeline Gutenberg block.
- * 
+ *
  * @todo Make an abstract class for Gutenblocks.
  */
 class Timeline implements Has_Hooks {
@@ -27,7 +27,7 @@ class Timeline implements Has_Hooks {
 	/**
 	 * Load timelines themes assets by looping throught all current page Gutenblocks
 	 * and (maybe) loading our theme assets.
-	 * 
+	 *
 	 * @todo Optimize this when Gutenberg will let us properly load block assets.
 	 */
 	public function load_timelines_themes_assets() {
@@ -64,12 +64,12 @@ class Timeline implements Has_Hooks {
 			return;
 		}
 
-		register_block_type( 
+		register_block_type(
 			self::BLOCK_NAME,
-			[ 
+			[
 				'editor_script'   => 'wpt-timeline-gutenblock',
 				'render_callback' => [ $this, 'render_timeline_gutenblock' ],
-			] 
+			]
 		);
 
 		wp_register_script(
@@ -78,11 +78,6 @@ class Timeline implements Has_Hooks {
 			[ 'wp-blocks', 'wp-element', 'wp-data', 'wp-components' ]
 		);
 
-		wp_enqueue_style(
-			'wpt-timeline-block-editor-css',
-			TIMELINER_ASSETS_URL . '/js/gutenberg/dist/blocks.editor.build.css',
-			[ 'wp-edit-blocks' ]
-		);
 	}
 
 	/**
@@ -98,6 +93,13 @@ class Timeline implements Has_Hooks {
 		$locale  = gutenberg_get_jed_locale_data( 'wp-timeliner' );
 		$content = 'wp.i18n.setLocaleData(' . json_encode( $locale ) . ', "wp-timeliner" );';
 		wp_script_add_data( 'wpt-timeline-gutenblock', 'data', $content );
+
+		wp_enqueue_style(
+			'wpt-timeline-block-editor-css',
+			TIMELINER_ASSETS_URL . '/js/gutenberg/dist/blocks.editor.build.css',
+			[ 'wp-edit-blocks' ]
+		);
+
 	}
 
 	/**
